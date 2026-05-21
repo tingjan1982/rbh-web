@@ -487,14 +487,100 @@ function Footer() {
   )
 }
 
-function RestaurantMedia({ restaurant }) {
+function ImageLightbox({ gallery, onClose }) {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  useEffect(() => {
+    if (!gallery) return
+    setActiveIndex(gallery.index || 0)
+  }, [gallery])
+
+  useEffect(() => {
+    if (!gallery) return undefined
+
+    const imageCount = gallery.images.length
+    const previousOverflow = document.body.style.overflow
+    const goToPrevious = () => setActiveIndex((current) => (current - 1 + imageCount) % imageCount)
+    const goToNext = () => setActiveIndex((current) => (current + 1) % imageCount)
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') onClose()
+      if (imageCount > 1 && event.key === 'ArrowLeft') goToPrevious()
+      if (imageCount > 1 && event.key === 'ArrowRight') goToNext()
+    }
+
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [gallery, onClose])
+
+  if (!gallery || gallery.images.length === 0) return null
+
+  const activeImage = gallery.images[activeIndex] || gallery.images[0]
+  const hasMultipleImages = gallery.images.length > 1
+  const goToPrevious = () => setActiveIndex((current) => (current - 1 + gallery.images.length) % gallery.images.length)
+  const goToNext = () => setActiveIndex((current) => (current + 1) % gallery.images.length)
+
+  return (
+    <div className="image-lightbox" role="dialog" aria-modal="true" aria-label={`${gallery.title} photos`} onClick={onClose}>
+      <div className="image-lightbox-panel" onClick={(event) => event.stopPropagation()}>
+        <button className="lightbox-close" type="button" onClick={onClose}>
+          Close
+        </button>
+        <div className="lightbox-stage">
+          <img className="lightbox-image" src={activeImage} alt={`${gallery.title} photo ${activeIndex + 1}`} />
+          {hasMultipleImages && (
+            <>
+              <button className="lightbox-nav lightbox-previous" type="button" onClick={goToPrevious}>
+                Previous
+              </button>
+              <button className="lightbox-nav lightbox-next" type="button" onClick={goToNext}>
+                Next
+              </button>
+            </>
+          )}
+        </div>
+        <div className="lightbox-caption">
+          <h3>{gallery.title}</h3>
+          <span>
+            {activeIndex + 1} of {gallery.images.length}
+          </span>
+        </div>
+        {hasMultipleImages && (
+          <div className="lightbox-thumbs" aria-label={`${gallery.title} photo list`}>
+            {gallery.images.map((image, index) => (
+              <button
+                className={index === activeIndex ? 'lightbox-thumb is-active' : 'lightbox-thumb'}
+                type="button"
+                key={image}
+                onClick={() => setActiveIndex(index)}
+                aria-label={`Show photo ${index + 1}`}
+                aria-current={index === activeIndex}
+              >
+                <img src={image} alt="" aria-hidden="true" />
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function RestaurantMedia({ restaurant, onOpen }) {
   const images = restaurantImages[restaurant.name] || []
   const isStatic = images.length <= 1
 
   return (
-    <div
+    <button
+      type="button"
       className={isStatic ? 'restaurant-media is-static' : 'restaurant-media'}
       style={{ '--image-count': images.length || 1 }}
+      onClick={onOpen}
+      aria-label={`Open ${restaurant.name} photo gallery`}
     >
       {images.map((image, index) => (
         <img
@@ -506,21 +592,24 @@ function RestaurantMedia({ restaurant }) {
           style={{ '--slide-index': index }}
         />
       ))}
-      <a className="restaurant-logo-badge" href={restaurant.href} target="_blank" rel="noreferrer">
+      <span className="restaurant-logo-badge">
         <img src={restaurant.logo} alt={restaurant.name + ' logo'} />
-      </a>
-    </div>
+      </span>
+    </button>
   )
 }
 
-function BusinessMedia({ business }) {
+function BusinessMedia({ business, onOpen }) {
   const images = business.images.length > 0 ? business.images : [business.logo]
   const isStatic = images.length <= 1
 
   return (
-    <div
+    <button
+      type="button"
       className={isStatic ? 'restaurant-media is-static' : 'restaurant-media'}
       style={{ '--image-count': images.length || 1 }}
+      onClick={onOpen}
+      aria-label={`Open ${business.name} photo gallery`}
     >
       {images.map((image, index) => (
         <img
@@ -533,118 +622,133 @@ function BusinessMedia({ business }) {
         />
       ))}
       {business.images.length > 0 && (
-        <a className="restaurant-logo-badge" href={business.href} target="_blank" rel="noreferrer">
+        <span className="restaurant-logo-badge">
           <img src={business.logo} alt={business.name + ' logo'} />
-        </a>
+        </span>
       )}
-    </div>
+    </button>
   )
 }
 
 function DiningDirectory() {
-  return (
-    <section className="dining-directory" id="dining-directory" aria-label="Dining directory">
-      <div className="restaurant-grid">
-        {restaurants.map((restaurant) => {
-          const details = restaurantDetails[restaurant.name]
-          const hours = details?.hours || restaurant.hours
-          const contacts = details?.contacts || [{ value: restaurant.phone, href: `tel:${restaurant.phone.replace(/\D/g, '')}` }]
-          const hiddenLinks = hiddenRestaurantLinks[restaurant.name] || []
-          const links = details?.links?.filter((link) => link.label !== 'Zomato' && !hiddenLinks.includes(link.label)) || []
+  const [gallery, setGallery] = useState(null)
 
-          return (
-            <article className="restaurant-card" key={restaurant.name}>
-              <RestaurantMedia restaurant={restaurant} />
-              <div className="restaurant-details">
-                <h3>{restaurant.name}</h3>
-                {details?.description && <p className="restaurant-description">{details.description}</p>}
-                <div className="restaurant-info">
-                  <div className="info-group hours-list" aria-label={restaurant.name + ' trading hours'}>
-                    <span className="info-label">Open hours</span>
-                    {hours.map((hoursLine) => (
-                      <p key={hoursLine}>{hoursLine}</p>
-                    ))}
-                  </div>
-                  <div className="info-group">
-                    <span className="info-label">Contact</span>
-                    {contacts.map((contact) => (
-                      <a href={contact.href} key={contact.value}>
-                        {contact.label ? `${contact.label}: ` : ''}
-                        {contact.value}
-                      </a>
-                    ))}
-                  </div>
-                  {links.length > 0 && (
-                    <div className="info-group">
-                      <span className="info-label">Links</span>
-                      <div className="restaurant-link-list">
-                        {links.map((link) => (
-                          <a href={link.href} key={link.href} target="_blank" rel="noreferrer">
-                            {link.label}
-                          </a>
-                        ))}
-                      </div>
+  return (
+    <>
+      <section className="dining-directory" id="dining-directory" aria-label="Dining directory">
+        <div className="restaurant-grid">
+          {restaurants.map((restaurant) => {
+            const details = restaurantDetails[restaurant.name]
+            const hours = details?.hours || restaurant.hours
+            const contacts = details?.contacts || [{ value: restaurant.phone, href: `tel:${restaurant.phone.replace(/\D/g, '')}` }]
+            const hiddenLinks = hiddenRestaurantLinks[restaurant.name] || []
+            const links = details?.links?.filter((link) => link.label !== 'Zomato' && !hiddenLinks.includes(link.label)) || []
+            const images = restaurantImages[restaurant.name] || []
+
+            return (
+              <article className="restaurant-card" key={restaurant.name}>
+                <RestaurantMedia restaurant={restaurant} onOpen={() => setGallery({ title: restaurant.name, images, index: 0 })} />
+                <div className="restaurant-details">
+                  <h3>{restaurant.name}</h3>
+                  {details?.description && <p className="restaurant-description">{details.description}</p>}
+                  <div className="restaurant-info">
+                    <div className="info-group hours-list" aria-label={restaurant.name + ' trading hours'}>
+                      <span className="info-label">Open hours</span>
+                      {hours.map((hoursLine) => (
+                        <p key={hoursLine}>{hoursLine}</p>
+                      ))}
                     </div>
-                  )}
+                    <div className="info-group">
+                      <span className="info-label">Contact</span>
+                      {contacts.map((contact) => (
+                        <a href={contact.href} key={contact.value}>
+                          {contact.label ? `${contact.label}: ` : ''}
+                          {contact.value}
+                        </a>
+                      ))}
+                    </div>
+                    {links.length > 0 && (
+                      <div className="info-group">
+                        <span className="info-label">Links</span>
+                        <div className="restaurant-link-list">
+                          {links.map((link) => (
+                            <a href={link.href} key={link.href} target="_blank" rel="noreferrer">
+                              {link.label}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <a className="restaurant-detail-link" href={restaurant.href} target="_blank" rel="noreferrer">
+                    View details
+                  </a>
                 </div>
-                <a className="restaurant-detail-link" href={restaurant.href} target="_blank" rel="noreferrer">
-                  View details
-                </a>
-              </div>
-            </article>
-          )
-        })}
-      </div>
-    </section>
+              </article>
+            )
+          })}
+        </div>
+      </section>
+      <ImageLightbox gallery={gallery} onClose={() => setGallery(null)} />
+    </>
   )
 }
 
 function BusinessesDirectory() {
+  const [gallery, setGallery] = useState(null)
+
   return (
-    <section className="dining-directory" id="businesses-directory" aria-label="Businesses directory">
-      <div className="restaurant-grid">
-        {businesses.map((business) => (
-          <article className="restaurant-card" key={business.name}>
-            <BusinessMedia business={business} />
-            <div className="restaurant-details">
-              <h3>{business.name}</h3>
-              <p className="restaurant-description">{business.description}</p>
-              <div className="restaurant-info">
-                <div className="info-group hours-list" aria-label={business.name + ' open hours'}>
-                  <span className="info-label">Open hours</span>
-                  {business.hours.map((hoursLine) => (
-                    <p key={hoursLine}>{hoursLine}</p>
-                  ))}
-                </div>
-                <div className="info-group">
-                  <span className="info-label">Contact</span>
-                  {business.contacts.map((contact) => (
-                    <a href={contact.href} key={contact.value}>
-                      {contact.value}
-                    </a>
-                  ))}
-                </div>
-                {business.links.length > 0 && (
-                  <div className="info-group">
-                    <span className="info-label">Links</span>
-                    <div className="restaurant-link-list">
-                      {business.links.map((link) => (
-                        <a href={link.href} key={link.href} target="_blank" rel="noreferrer">
-                          {link.label}
+    <>
+      <section className="dining-directory" id="businesses-directory" aria-label="Businesses directory">
+        <div className="restaurant-grid">
+          {businesses.map((business) => {
+            const images = business.images.length > 0 ? business.images : [business.logo]
+
+            return (
+              <article className="restaurant-card" key={business.name}>
+                <BusinessMedia business={business} onOpen={() => setGallery({ title: business.name, images, index: 0 })} />
+                <div className="restaurant-details">
+                  <h3>{business.name}</h3>
+                  <p className="restaurant-description">{business.description}</p>
+                  <div className="restaurant-info">
+                    <div className="info-group hours-list" aria-label={business.name + ' open hours'}>
+                      <span className="info-label">Open hours</span>
+                      {business.hours.map((hoursLine) => (
+                        <p key={hoursLine}>{hoursLine}</p>
+                      ))}
+                    </div>
+                    <div className="info-group">
+                      <span className="info-label">Contact</span>
+                      {business.contacts.map((contact) => (
+                        <a href={contact.href} key={contact.value}>
+                          {contact.value}
                         </a>
                       ))}
                     </div>
+                    {business.links.length > 0 && (
+                      <div className="info-group">
+                        <span className="info-label">Links</span>
+                        <div className="restaurant-link-list">
+                          {business.links.map((link) => (
+                            <a href={link.href} key={link.href} target="_blank" rel="noreferrer">
+                              {link.label}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-              <a className="restaurant-detail-link" href={business.href} target="_blank" rel="noreferrer">
-                View details
-              </a>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
+                  <a className="restaurant-detail-link" href={business.href} target="_blank" rel="noreferrer">
+                    View details
+                  </a>
+                </div>
+              </article>
+            )
+          })}
+        </div>
+      </section>
+      <ImageLightbox gallery={gallery} onClose={() => setGallery(null)} />
+    </>
   )
 }
 
