@@ -13,30 +13,30 @@ const experiences = [
   {
     id: 'dining',
     title: 'Dining',
-    image: '/assets/dining.png',
+    image: '/assets/dining.svg',
     color: '#ffbd26',
     text: 'Waterfront restaurants and casual places to meet beside the marina.',
   },
   {
     id: 'businesses',
     title: 'Businesses',
-    image: '/assets/businesses.png',
+    image: '/assets/businesses.svg',
     color: '#f58029',
     text: 'Local services and professional operators in the heart of Cleveland.',
-  },
-  {
-    id: 'markets',
-    title: 'Markets',
-    image: '/assets/markets.png',
-    color: '#038f99',
-    text: 'Twilight makers markets, waterside browsing, and community events.',
   },
   {
     id: 'event',
     title: 'Events',
     image: '/assets/event.svg',
-    color: '#0a3352',
+    color: '#175c8a',
     text: 'Community events, activations, and synergy around Raby Bay Harbour and Cleveland.',
+  },
+  {
+    id: 'markets',
+    title: 'Markets',
+    image: '/assets/markets.svg',
+    color: '#038f99',
+    text: 'Twilight makers markets, waterside browsing, and community events.',
   },
 ]
 
