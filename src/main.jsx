@@ -6,6 +6,7 @@ const navItems = [
   ['Home', '/'],
   ['Dining', '/dining'],
   ['Businesses', '/businesses'],
+  ['Leasing', '/leasing'],
   ['Contact Us', '/#contact'],
 ]
 
@@ -432,6 +433,41 @@ const businesses = [
   },
 ]
 
+function LeasingIcon({ type }) {
+  return (
+    <span className="leasing-tile-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" role="img">
+        {type === 'permanent' && (
+          <>
+            <path d="M4 10h16" />
+            <path d="M6 10v9h12v-9" />
+            <path d="M8 19v-5h4v5" />
+            <path d="M5 10l2-5h10l2 5" />
+            <path d="M9 5v5" />
+            <path d="M15 5v5" />
+          </>
+        )}
+        {type === 'experience' && (
+          <>
+            <path d="M6 20h12" />
+            <path d="M7 20v-8h10v8" />
+            <path d="M9 12V8a3 3 0 0 1 6 0v4" />
+            <path d="M5 5l1-2 1 2 2 1-2 1-1 2-1-2-2-1 2-1z" />
+            <path d="M18 7l.7-1.5L19.5 7l1.5.8-1.5.7-.8 1.5-.7-1.5-1.5-.7L18 7z" />
+          </>
+        )}
+        {type === 'harbour' && (
+          <>
+            <path d="M12 21s6-5.2 6-11a6 6 0 0 0-12 0c0 5.8 6 11 6 11z" />
+            <path d="M9 10.5c1.1-.8 2-.8 3 0s1.9.8 3 0" />
+            <path d="M9 13.5c1.1-.8 2-.8 3 0s1.9.8 3 0" />
+          </>
+        )}
+      </svg>
+    </span>
+  )
+}
+
 function Header() {
   const [locationState, setLocationState] = useState(() => ({
     hash: window.location.hash,
@@ -630,6 +666,46 @@ function BusinessMedia({ business, onOpen }) {
   )
 }
 
+function getListingSlug(name) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
+}
+
+function DiningQuickDirectory() {
+  return (
+    <section className="quick-directory" aria-labelledby="quick-dining-title">
+      <div className="quick-directory-heading">
+        <p className="eyebrow">At a glance</p>
+        <h2 id="quick-dining-title">Restaurants around the harbour</h2>
+      </div>
+      <div className="quick-directory-grid">
+        {restaurants.map((restaurant) => (
+          <a className="quick-directory-item" href={`#restaurant-${getListingSlug(restaurant.name)}`} key={restaurant.name}>
+            <span>{restaurant.name}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function BusinessesQuickDirectory() {
+  return (
+    <section className="quick-directory" aria-labelledby="quick-businesses-title">
+      <div className="quick-directory-heading">
+        <p className="eyebrow">At a glance</p>
+        <h2 id="quick-businesses-title">Businesses around the harbour</h2>
+      </div>
+      <div className="quick-directory-grid">
+        {businesses.map((business) => (
+          <a className="quick-directory-item" href={`#business-${getListingSlug(business.name)}`} key={business.name}>
+            <span>{business.name}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function DiningDirectory() {
   const [gallery, setGallery] = useState(null)
 
@@ -646,7 +722,7 @@ function DiningDirectory() {
             const images = restaurantImages[restaurant.name] || []
 
             return (
-              <article className="restaurant-card" key={restaurant.name}>
+              <article className="restaurant-card" id={`restaurant-${getListingSlug(restaurant.name)}`} key={restaurant.name}>
                 <RestaurantMedia restaurant={restaurant} onOpen={() => setGallery({ title: restaurant.name, images, index: 0 })} />
                 <div className="restaurant-details">
                   <h3>{restaurant.name}</h3>
@@ -705,7 +781,7 @@ function BusinessesDirectory() {
             const images = business.images.length > 0 ? business.images : [business.logo]
 
             return (
-              <article className="restaurant-card" key={business.name}>
+              <article className="restaurant-card" id={`business-${getListingSlug(business.name)}`} key={business.name}>
                 <BusinessMedia business={business} onOpen={() => setGallery({ title: business.name, images, index: 0 })} />
                 <div className="restaurant-details">
                   <h3>{business.name}</h3>
@@ -842,6 +918,7 @@ function HomePage() {
           </div>
           <div className="contact-layout">
             <div className="map-card" aria-label="Raby Bay Harbour map">
+              <img className="contact-location-image" src="/assets/footer-harbour.jpg" alt="Raby Bay Harbour waterfront" />
               <iframe
                 title="Raby Bay Harbour location map"
                 src="https://www.google.com/maps?q=Raby%20Bay%20Harbour%20152-156%20Shore%20Street%20West%20Cleveland%20QLD%204163&output=embed"
@@ -853,7 +930,6 @@ function HomePage() {
               </a>
             </div>
             <div className="contact-panel">
-              <p className="contact-intro">Plan your visit or contact the harbour team.</p>
               <div className="contact-grid">
                 {contacts.map((contact) => (
                   <article key={contact.title} className="contact-card">
@@ -893,6 +969,7 @@ function DiningPage() {
             </p>
           </div>
         </section>
+        <DiningQuickDirectory />
         <DiningDirectory />
       </main>
       <Footer />
@@ -917,7 +994,109 @@ function BusinessesPage() {
             </p>
           </div>
         </section>
+        <BusinessesQuickDirectory />
         <BusinessesDirectory />
+      </main>
+      <Footer />
+    </>
+  )
+}
+
+function LeasingPage() {
+  const leasingBenefits = [
+    'Build visibility in a proven harbour-side destination.',
+    'Reach diners, marina visitors, local residents, and Cleveland workers.',
+    'Test a new concept, product, or activation before committing long term.',
+    'Position your brand near established food, service, and waterfront operators.',
+  ]
+
+  return (
+    <>
+      <Header />
+      <main className="page-main">
+        <section className="dining-showcase leasing-showcase" aria-labelledby="page-title">
+          <img src="/assets/raby-bay-harbour-aerial.jpg" alt="" className="dining-showcase-image" />
+          <div className="dining-showcase-overlay" />
+          <div className="dining-showcase-content">
+            <p className="eyebrow">Leasing</p>
+            <h1 id="page-title">Grow your business at Raby Bay Harbour</h1>
+            <p>
+              Explore permanent and short-term leasing opportunities in a waterfront
+              precinct shaped by dining, services, marina life, and local community.
+            </p>
+          </div>
+        </section>
+
+        <section className="leasing-intro" aria-label="Leasing overview">
+          <div className="leasing-copy">
+            <p className="eyebrow">Leasing</p>
+            <h2>A visible Cleveland location with a strong local rhythm.</h2>
+            <p>
+              Raby Bay Harbour brings together restaurants, professional services,
+              marina visitors, and nearby residential catchments in one walkable
+              waterside destination.
+            </p>
+            <p>
+              For permanent retailers, service providers, and hospitality operators,
+              the precinct offers an established address with repeat visitation and
+              clear lifestyle appeal.
+            </p>
+          </div>
+          <aside className="leasing-contact-card">
+            <span className="info-label">Leasing enquiries</span>
+            <h3>Start a conversation</h3>
+            <p>Contact Kent Beal to discuss current or upcoming opportunities.</p>
+            <p className="leasing-contact-name">Kent Beal</p>
+            <a href="mailto:payable@rabybayharbour.com?subject=Raby%20Bay%20Harbour%20leasing%20enquiry">
+              payable@rabybayharbour.com
+            </a>
+            <a href="tel:+61408456391">0408 456 391</a>
+          </aside>
+        </section>
+
+        <section className="leasing-summary" aria-labelledby="leasing-summary-title">
+          <div className="leasing-summary-heading">
+            <p className="eyebrow">Opportunities</p>
+            <h2 id="leasing-summary-title">Choose the leasing path that fits your next move.</h2>
+          </div>
+          <div className="leasing-summary-layout">
+            <div className="leasing-option-grid">
+              <article>
+                <LeasingIcon type="permanent" />
+                <span className="info-label">Permanent Leasing</span>
+                <h3>For established operators ready to join the precinct.</h3>
+                <p>
+                  Permanent leasing suits businesses seeking a recognisable harbour
+                  address and the opportunity to become part of the daily pattern of
+                  Raby Bay and Cleveland.
+                </p>
+              </article>
+              <article>
+                <LeasingIcon type="experience" />
+                <span className="info-label">Retail Experience Leasing</span>
+                <h3>For pop-ups, activations, launches, and short-term ideas.</h3>
+                <p>
+                  Short-term leasing can help brands test new markets, build awareness,
+                  promote seasonal offers, and create energy around the harbour without
+                  the same commitment as a permanent tenancy.
+                </p>
+              </article>
+            </div>
+            <aside className="leasing-benefit-panel" aria-label="Why Raby Bay Harbour">
+              <LeasingIcon type="harbour" />
+              <span className="info-label">Why Raby Bay Harbour</span>
+              <h3>A setting made for destination-led businesses.</h3>
+              <div className="leasing-benefit-grid">
+                {leasingBenefits.map((benefit) => (
+                  <article key={benefit}>
+                    <span />
+                    <p>{benefit}</p>
+                  </article>
+                ))}
+              </div>
+            </aside>
+          </div>
+        </section>
       </main>
       <Footer />
     </>
@@ -933,6 +1112,10 @@ function App() {
 
   if (path === '/businesses') {
     return <BusinessesPage />
+  }
+
+  if (path === '/leasing') {
+    return <LeasingPage />
   }
 
   return <HomePage />
