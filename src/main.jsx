@@ -126,7 +126,7 @@ const restaurantDetails = {
     ],
     address: 'Shop 9-10, 152-156 Shore Street West, Cleveland QLD 4163',
     links: [
-      { label: 'Website', href: 'http://www.fictionbar.com.au/' },
+      { label: 'Website', href: 'https://fictionbar.com.au/' },
       { label: 'Facebook', href: 'https://www.facebook.com/fictionbarrabybay/' },
       { label: 'Instagram', href: 'https://www.instagram.com/explore/locations/237661182/' },
       { label: 'Zomato', href: 'https://www.zomato.com/brisbane/fiction-bar-restaurant-cleveland' },
@@ -165,7 +165,7 @@ const restaurantDetails = {
     ],
     address: 'Shop 10, 152-156 Shore Street West, Cleveland QLD 4163',
     links: [
-      { label: 'Website', href: 'http://www.mammamiarabybay.com.au/' },
+      { label: 'Website', href: 'https://www.mammamiarabybay.com.au/' },
       { label: 'Facebook', href: 'https://www.facebook.com/Mamma-mia-Trattoria-Pizzeria-125490010894193/' },
       { label: 'Zomato', href: 'https://www.zomato.com/brisbane/mama-mias-pizzeria-cleveland/' },
     ],
@@ -334,13 +334,13 @@ const businesses = [
     logo: '/assets/businesses/e23-hair-logo.jpg',
     images: ['/assets/businesses/e23-hair-1.jpg'],
     description: 'A luxury hair studio focused on bespoke colour, precision cutting, premium extensions, and a refined salon experience.',
-    hours: ['Appointment only', 'Thurs: 7am - 7pm'],
+    hours: ['Appointment only'],
     contacts: [
       { value: '0481 481 675', href: 'tel:0481481675' },
       { value: 'E23hair@icloud.com', href: 'mailto:E23hair@icloud.com' },
     ],
     links: [
-      { label: 'Book online', href: 'http://bookings.gettimely.com/E23hair/bb/book' },
+      { label: 'Book online', href: 'https://bookings.gettimely.com/E23hair/bb/book' },
       { label: 'Instagram', href: 'https://www.instagram.com/e23hair/' },
       { label: 'Facebook', href: 'https://www.facebook.com/charleyelizabethhair/' },
     ],
@@ -405,7 +405,7 @@ const businesses = [
     hours: ['Mon-Fri: 8:30am - 4:15pm', 'Sat-Sun: Closed'],
     contacts: [{ value: '07 3821 6699', href: 'tel:0738216699' }],
     links: [
-      { label: 'Website', href: 'http://www.starcommunityservices.org.au/' },
+      { label: 'Website', href: 'https://www.starcommunityservices.org.au/' },
       { label: 'Facebook', href: 'https://www.facebook.com/starcommunityservices/' },
     ],
     href: 'https://rabybayharbour.com.au/star-community-services',
@@ -425,7 +425,7 @@ const businesses = [
       { value: 'debmcc6@outlook.com', href: 'mailto:debmcc6@outlook.com' },
     ],
     links: [
-      { label: 'Website', href: 'http://www.straddievarious.com.au/' },
+      { label: 'Website', href: 'https://straddievarious.com.au/' },
       { label: 'Facebook', href: 'https://www.facebook.com/straddievarious/' },
     ],
     href: 'https://rabybayharbour.com.au/straddievarious-gallery',
