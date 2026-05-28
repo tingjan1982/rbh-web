@@ -44,7 +44,7 @@ const experiences = [
 const contacts = [
   {
     title: 'Centre Management',
-    address: '152-156 Shore Street West, Cleveland QLD 4163',
+    address: 'Suite 20, Level 1, 152-166 Shore St W. Cleveland QLD 4163',
     hours: 'Mon-Fri: from 9am - 4pm',
     email: 'payable@rabybayharbour.com',
     phone: '+61 7 3050 3068',
@@ -469,6 +469,7 @@ function LeasingIcon({ type }) {
 }
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [locationState, setLocationState] = useState(() => ({
     hash: window.location.hash,
     path: window.location.pathname,
@@ -480,6 +481,7 @@ function Header() {
         hash: window.location.hash,
         path: window.location.pathname,
       })
+      setIsMenuOpen(false)
     }
 
     window.addEventListener('hashchange', updateLocation)
@@ -496,7 +498,21 @@ function Header() {
       <a className="brand" href="/" aria-label="Raby Bay Harbour home">
         <img src="/assets/raby-bay-logo.png" alt="Raby Bay Harbour" />
       </a>
-      <nav aria-label="Primary navigation">
+      <button
+        className="menu-toggle"
+        type="button"
+        aria-expanded={isMenuOpen}
+        aria-controls="primary-navigation"
+        onClick={() => setIsMenuOpen((current) => !current)}
+      >
+        <span className="menu-toggle-lines" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+        </span>
+        <span>Menu</span>
+      </button>
+      <nav id="primary-navigation" className={isMenuOpen ? 'primary-nav is-open' : 'primary-nav'} aria-label="Primary navigation">
         {navItems.map(([label, href]) => {
           const [hrefPathValue, hrefHash] = href.split('#')
           const hrefPath = hrefPathValue || '/'
@@ -505,7 +521,13 @@ function Header() {
             : locationState.path === hrefPath && (hrefPath !== '/' || locationState.hash === '')
 
           return (
-            <a key={label} href={href} className={isActive ? 'is-active' : undefined} aria-current={isActive ? 'page' : undefined}>
+            <a
+              key={label}
+              href={href}
+              className={isActive ? 'is-active' : undefined}
+              aria-current={isActive ? 'page' : undefined}
+              onClick={() => setIsMenuOpen(false)}
+            >
               {label}
             </a>
           )
@@ -919,14 +941,13 @@ function HomePage() {
           <div className="contact-layout">
             <div className="map-card" aria-label="Raby Bay Harbour map">
               <img className="contact-location-image" src="/assets/footer-harbour.jpg" alt="Raby Bay Harbour waterfront" />
-              <iframe
-                title="Raby Bay Harbour location map"
-                src="https://www.google.com/maps?q=Raby%20Bay%20Harbour%20152-156%20Shore%20Street%20West%20Cleveland%20QLD%204163&output=embed"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-              <a href="https://maps.app.goo.gl/cwHxwPJYWCazEmPN9" target="_blank" rel="noreferrer">
-                Open in Google Maps
+              <div className="map-card-copy">
+                <span>Location</span>
+                <h3>Raby Bay Harbour</h3>
+                <p>152-166 Shore Street West, Cleveland QLD 4163</p>
+              </div>
+              <a className="map-link" href="https://maps.app.goo.gl/cwHxwPJYWCazEmPN9" target="_blank" rel="noreferrer">
+                View Map
               </a>
             </div>
             <div className="contact-panel">
@@ -934,11 +955,32 @@ function HomePage() {
                 {contacts.map((contact) => (
                   <article key={contact.title} className="contact-card">
                     <h3>{contact.title}</h3>
-                    <p>{contact.address}</p>
-                    <p>{contact.hours}</p>
-                    {contact.name && <p>{contact.name}</p>}
-                    {contact.email && <a href={`mailto:${contact.email}`}>{contact.email}</a>}
-                    <a href={`tel:${contact.phone.replace(/\s/g, '')}`}>{contact.phone}</a>
+                    <div className="contact-card-details">
+                      <p>
+                        <span>Address</span>
+                        {contact.address}
+                      </p>
+                      <p>
+                        <span>Hours</span>
+                        {contact.hours}
+                      </p>
+                      {contact.name && (
+                        <p>
+                          <span>Contact</span>
+                          {contact.name}
+                        </p>
+                      )}
+                      {contact.email && (
+                        <p>
+                          <span>Email</span>
+                          <a href={`mailto:${contact.email}`}>{contact.email}</a>
+                        </p>
+                      )}
+                      <p>
+                        <span>Phone</span>
+                        <a href={`tel:${contact.phone.replace(/\s/g, '')}`}>{contact.phone}</a>
+                      </p>
+                    </div>
                   </article>
                 ))}
               </div>
