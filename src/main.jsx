@@ -59,24 +59,24 @@ const contacts = [
 ]
 
 const restaurants = [
-  { name: 'The Bayside Asian House', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/baysideasianlogo.jpg', hours: ['Mon-Tues: Closed', 'Wed-Fri: 5pm - 9:30pm', 'Sat-Sun: 11am - 2:30pm, 5pm - 9:30pm'], phone: '(07) 3488 0103', href: 'https://rabybayharbour.com.au/the-bayside-asian-house/' },
-  { name: "Chop 'n Chill", logo: 'https://rabybayharbour.com.au/wp-content/uploads/2023/12/chopchilllogo1.jpg', hours: ['Mon-Thurs: 8am - 8:30pm', 'Fri: 8am - 9pm', 'Sat: 7am - 9pm', 'Sun: 7am - 8:30pm'], phone: '(07) 3829 0267', href: 'https://rabybayharbour.com.au/chop-n-chill/' },
+  { name: 'The Bayside Asian House', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/baysideasianlogo.jpg', hours: ['Mon-Tue: Closed', 'Wed-Fri: 5pm - 9pm', 'Sat-Sun: 11am - 2pm, 5pm - 9pm'], phone: '(07) 3488 0103', href: 'https://rabybayharbour.com.au/the-bayside-asian-house/' },
+  { name: "Chop 'n Chill", logo: 'https://rabybayharbour.com.au/wp-content/uploads/2023/12/chopchilllogo1.jpg', hours: ['Mon-Thu: 8am - 8:30pm', 'Fri: 8am - 9:30pm', 'Sat-Sun: 7am - 9:30pm'], phone: '(07) 3829 0267', href: 'https://rabybayharbour.com.au/chop-n-chill/' },
   { name: 'Cold Rock Ice Creamery', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/coldrocklogo.jpg', hours: ['Mon-Thu: 12pm - 9pm', 'Fri: 12pm - 10pm', 'Sat: 11am - 10pm', 'Sun: 11am - 9pm'], phone: '(07) 3821 0069', href: 'https://rabybayharbour.com.au/cold-rock-ice-creamery/' },
-  { name: 'Crusoe Cafe', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/crusoelogo.jpg', hours: ['Mon-Fri: 6:30am - 2pm', 'Sat-Sun: 6:30am - 12pm'], phone: '(07) 3286 7757', href: 'https://rabybayharbour.com.au/crusoe-cafe/' },
-  { name: 'Fiction Bar & Restaurant', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/fictionlogo.jpg', hours: ['11am - Late, 7 Days'], phone: '(07) 3488 2888', href: 'https://rabybayharbour.com.au/fiction/' },
-  { name: "Hog's Breath Cafe", logo: 'https://rabybayharbour.com.au/wp-content/uploads/2022/01/hogslogo2.jpg', hours: ['Mon-Fri: 11:30am - Late', 'Sat-Sun: 11am - Late'], phone: '(07) 3286 9022', href: 'https://rabybayharbour.com.au/hogs/' },
+  { name: 'Crusoe Cafe', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/crusoelogo.jpg', hours: ['Mon-Fri: 6:30am - 1:45pm', 'Sat-Sun: 6:30am - 12pm'], phone: '(07) 3286 7757', href: 'https://rabybayharbour.com.au/crusoe-cafe/' },
+  { name: 'Fiction Bar & Restaurant', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/fictionlogo.jpg', hours: ['Mon-Thu, Sun: 11:30am - 8:30pm', 'Fri-Sat: 11:30am - 11:30pm'], phone: '(07) 3488 2888', href: 'https://rabybayharbour.com.au/fiction/' },
+  { name: "Hog's Breath Cafe", logo: 'https://rabybayharbour.com.au/wp-content/uploads/2022/01/hogslogo2.jpg', hours: ['Mon-Fri: 11:30am - 9pm', 'Sat-Sun: 11am - 9pm'], phone: '(07) 3286 9022', href: 'https://rabybayharbour.com.au/hogs/' },
   { name: 'K Soul BBQ', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2023/12/kbbqlogo.jpg', hours: ['Sun-Thurs: 11:30am - 3pm, 5:30pm - 9:30pm', 'Fri-Sat: 11:30am - 3pm, 5:30pm - 10pm'], phone: '(07) 3286 1949', href: 'https://rabybayharbour.com.au/k-soul-bbq/' },
-  { name: 'Mamma Mia Trattoria Pizzeria', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/mammamialogo.jpg', hours: ['Mon-Tue: 5:30pm - 9pm', 'Wed-Sun: 11:30am - 2:30pm, 5:30pm - 9pm'], phone: '(07) 3488 0330', href: 'https://rabybayharbour.com.au/mamma-mia/' },
+  { name: 'Mamma Mia Trattoria Pizzeria', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/mammamialogo.jpg', hours: ['Mon-Tue: 5pm - 9pm', 'Wed-Thu: 11am - 2:30pm, 4:30pm - 9pm', 'Fri-Sat: 11am - 2:30pm, 4:30pm - 9:30pm', 'Sun: 11am - 3pm, 4:30pm - 9pm'], phone: '(07) 3488 0330', href: 'https://rabybayharbour.com.au/mamma-mia/' },
   { name: 'The Pursuit of Hoppiness', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2025/10/pofh3.jpg', hours: ['Mon-Tues: Closed', 'Wed-Fri: 11:30am - Late', 'Sat-Sun: 11am - Late'], phone: '07 3496 0849', href: 'https://rabybayharbour.com.au/the-pursuit-of-hoppiness/' },
-  { name: 'Samson Fish Seafood', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/samsonlogo.jpg', hours: ['Mon-Wed: 11am - 8pm', 'Thu-Fri: 11am - 9pm', 'Sat-Sun: 11am - 8pm'], phone: '07 3488 2088', href: 'https://rabybayharbour.com.au/samson-fish-seafood/' },
+  { name: 'Samson Fish Seafood', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/samsonlogo.jpg', hours: ['Sun-Thu: 11am - 8pm', 'Fri-Sat: 11am - 9pm'], phone: '07 3488 2088', href: 'https://rabybayharbour.com.au/samson-fish-seafood/' },
   { name: 'Sushi Lovers', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/sushilovers.jpg', hours: ['11am - 3pm, 5pm - 9pm, 7 Days'], phone: '07 3821 6186', href: 'https://rabybayharbour.com.au/sushi-lovers/' },
-  { name: 'Teppanyaki Bar', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/teppanyakilogo.jpg', hours: ['Mon: Closed', 'Tues-Fri: 5:30pm - 10pm', 'Sat-Sun: 11:30am - 2pm, 5:30pm - 10pm'], phone: '07 3488 0768', href: 'https://rabybayharbour.com.au/teppanyaki-bar/' },
+  { name: 'Teppanyaki Bar', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/teppanyakilogo.jpg', hours: ['Mon: Closed', 'Tue-Thu: 5:30pm - 8:30pm', 'Fri: 5:30pm - 10pm', 'Sat: 11:30am - 2pm, 5:30pm - 10pm', 'Sun: 11:30am - 2pm, 5:30pm - 8:30pm'], phone: '07 3488 0768', href: 'https://rabybayharbour.com.au/teppanyaki-bar/' },
 ]
 
 const restaurantDetails = {
   'The Bayside Asian House': {
     description: 'Authentic Asian flavours, special menu dishes, and waterfront views in the heart of Raby Bay Harbour.',
-    hours: ['Mon-Tues: Closed', 'Wed-Fri: 5pm - 9:30pm', 'Sat-Sun: 11am - 2:30pm | 5pm - 9:30pm'],
+    hours: ['Mon-Tue: Closed', 'Wed-Fri: 5pm - 9pm', 'Sat-Sun: 11am - 2pm, 5pm - 9pm'],
     contacts: [
       { label: 'Book a table', value: '0413 471 188', href: 'tel:0413471188' },
       { value: '(07) 3488 0103', href: 'tel:0734880103' },
@@ -86,7 +86,7 @@ const restaurantDetails = {
   },
   "Chop 'n Chill": {
     description: 'East-meets-West dining with South East Asian street-style food, smoked-meat flavours, breakfast, lunch, dinner, cocktails, and inclusive vegan, vegetarian, and gluten-free options.',
-    hours: ['Mon-Thurs: 8am - 8:30pm', 'Fri: 8am - 9pm', 'Sat: 7am - 9pm', 'Sun: 7am - 8:30pm'],
+    hours: ['Mon-Thu: 8am - 8:30pm', 'Fri: 8am - 9:30pm', 'Sat-Sun: 7am - 9:30pm'],
     contacts: [
       { value: '(07) 3829 0267', href: 'tel:0738290267' },
       { value: 'richo.rabybay@chopnchill.com.au', href: 'mailto:richo.rabybay@chopnchill.com.au' },
@@ -110,17 +110,18 @@ const restaurantDetails = {
   },
   'Crusoe Cafe': {
     description: 'A relaxed cafe serving freshly made breakfasts, lunches, gourmet cakes, sweets, and muffins beside the harbour.',
-    hours: ['Mon-Fri: 6:30am - 2pm', 'Sat-Sun: 6:30am - 12pm'],
+    hours: ['Mon-Fri: 6:30am - 1:45pm', 'Sat-Sun: 6:30am - 12pm'],
     contacts: [{ value: '(07) 3286 7757', href: 'tel:0732867757' }],
     address: 'Shop 12, 152-156 Shore Street West, Cleveland QLD 4163',
     links: [
+      { label: 'Website', href: 'https://crusoecafe.com.au/' },
       { label: 'Facebook', href: 'https://www.facebook.com/Crusoe-CAFE-627617070742433/' },
       { label: 'Zomato', href: 'https://www.zomato.com/brisbane/crusoe-cafe-cleveland/' },
     ],
   },
   'Fiction Bar & Restaurant': {
     description: 'A waterfront bar and restaurant with seasonal gastrobar dishes, drinks, weekend lunches, relaxed dinners, and function space.',
-    hours: ['11am - Late, 7 Days'],
+    hours: ['Mon-Thu, Sun: 11:30am - 8:30pm', 'Fri-Sat: 11:30am - 11:30pm'],
     contacts: [
       { value: '(07) 3488 2888', href: 'tel:0734882888' },
       { value: 'info@fictionbar.com.au', href: 'mailto:info@fictionbar.com.au' },
@@ -135,7 +136,7 @@ const restaurantDetails = {
   },
   "Hog's Breath Cafe": {
     description: 'A relaxed steakhouse overlooking the marina, with outdoor dining, a family-friendly atmosphere, big desserts, and a fully licensed bar.',
-    hours: ['Mon-Fri: 11:30am - Late', 'Sat-Sun: 11am - Late'],
+    hours: ['Mon-Fri: 11:30am - 9pm', 'Sat-Sun: 11am - 9pm'],
     contacts: [
       { value: '(07) 3286 9022', href: 'tel:0732869022' },
       { value: 'cleveland@hogsbreath.com.au', href: 'mailto:cleveland@hogsbreath.com.au' },
@@ -159,7 +160,7 @@ const restaurantDetails = {
   },
   'Mamma Mia Trattoria Pizzeria': {
     description: 'A family-run Italian restaurant serving authentic Northern and Southern cuisine in a warm setting for casual meals and celebrations.',
-    hours: ['Mon-Tue: 5:30pm - 9pm', 'Wed-Sun: 11:30am - 2:30pm, 5:30pm - 9pm'],
+    hours: ['Mon-Tue: 5pm - 9pm', 'Wed-Thu: 11am - 2:30pm, 4:30pm - 9pm', 'Fri-Sat: 11am - 2:30pm, 4:30pm - 9:30pm', 'Sun: 11am - 3pm, 4:30pm - 9pm'],
     contacts: [
       { value: '(07) 3488 0330', href: 'tel:0734880330' },
       { value: 'info@mammamiarabybay.com.au', href: 'mailto:info@mammamiarabybay.com.au' },
@@ -180,17 +181,17 @@ const restaurantDetails = {
     ],
     address: '152-156 Shore Street West, Cleveland QLD 4163',
     links: [
+      { label: 'Website', href: 'https://thepursuitofhoppiness.com.au/' },
       { label: 'Facebook', href: 'https://www.facebook.com/people/The-Pursuit-Of-Hoppiness-Food-Liquor/61577008732438/' },
       { label: 'Instagram', href: 'https://www.instagram.com/_thepursuitofhoppiness_/' },
     ],
   },
   'Samson Fish Seafood': {
     description: 'A family seafood restaurant and takeaway with covered seating, harbour views, fresh Australian produce, and classic hot and cold seafood options.',
-    hours: ['Mon-Wed: 11am - 8pm', 'Thu-Fri: 11am - 9pm', 'Sun: 11am - 8pm'],
+    hours: ['Sun-Thu: 11am - 8pm', 'Fri-Sat: 11am - 9pm'],
     contacts: [{ value: '07 3488 2088', href: 'tel:0734882088' }],
     address: '152-156 Shore Street West, Cleveland QLD 4163',
     links: [
-      { label: 'Website', href: 'http://samsonfishseafood.com.au/' },
       { label: 'Facebook', href: 'https://www.facebook.com/Samson-Fish-Seafood-155237257848250/' },
       { label: 'Zomato', href: 'https://www.zomato.com/brisbane/samson-fish-seafood-cleveland' },
     ],
@@ -207,7 +208,7 @@ const restaurantDetails = {
   },
   'Teppanyaki Bar': {
     description: 'A fully licensed Japanese teppanyaki restaurant where food is cooked on the iron griddle in front of guests.',
-    hours: ['Mon: Closed', 'Tues-Fri: 5:30pm - 10pm', 'Sat-Sun: 11:30am - 2pm, 5:30pm - 10pm'],
+    hours: ['Mon: Closed', 'Tue-Thu: 5:30pm - 8:30pm', 'Fri: 5:30pm - 10pm', 'Sat: 11:30am - 2pm, 5:30pm - 10pm', 'Sun: 11:30am - 2pm, 5:30pm - 8:30pm'],
     contacts: [{ value: '07 3488 0768', href: 'tel:0734880768' }],
     address: 'Shop 14, 152-156 Shore Street West, Cleveland QLD 4163',
     links: [
@@ -288,7 +289,7 @@ const businesses = [
       '/assets/businesses/aft-projects-3.jpg',
     ],
     description: 'A Redlands-born property company delivering high-end residential projects across Redland City and Southeast Queensland.',
-    hours: ['Mon-Fri: 9am - 5pm', 'Sun: Closed'],
+    hours: ['Mon-Fri: 9am - 5pm', 'Sat-Sun: Closed'],
     contacts: [
       { value: '(07) 3286 5177', href: 'tel:0732865177' },
       { value: 'nyanda@javica.com.au', href: 'mailto:nyanda@javica.com.au' },
@@ -420,7 +421,7 @@ const businesses = [
       '/assets/businesses/straddievarious-3.jpg',
     ],
     description: 'A gallery showcasing Redlands local artists and artisans, with artisan collections and beautiful handmade pieces.',
-    hours: ['Mon: Closed', 'Tues: 11am - 2:30pm', 'Wed-Thurs: 11am - 4pm', 'Fri: 11am - 6:30pm', 'Sat-Sun: 10am - 4pm'],
+    hours: ['Mon: Closed', 'Tue-Thu: 10am - 4pm', 'Fri: 10am - 7pm', 'Sat-Sun: 10am - 4pm'],
     contacts: [
       { value: '0412 747 716', href: 'tel:0412747716' },
       { value: 'debmcc6@outlook.com', href: 'mailto:debmcc6@outlook.com' },
