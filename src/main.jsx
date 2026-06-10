@@ -779,9 +779,6 @@ function DiningDirectory() {
                       </div>
                     )}
                   </div>
-                  <a className="restaurant-detail-link" href={restaurant.href} target="_blank" rel="noreferrer">
-                    View details
-                  </a>
                 </div>
               </article>
             )
@@ -837,9 +834,6 @@ function BusinessesDirectory() {
                       </div>
                     )}
                   </div>
-                  <a className="restaurant-detail-link" href={business.href} target="_blank" rel="noreferrer">
-                    View details
-                  </a>
                 </div>
               </article>
             )

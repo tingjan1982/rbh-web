@@ -465,7 +465,7 @@ p {
 .quick-directory-item span { font-weight: 800; line-height: 1.15; }
 .dining-directory { padding: clamp(42px, 7vw, 78px) clamp(20px, 5vw, 72px) clamp(58px, 8vw, 108px); background: #fff; }
 .restaurant-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-.restaurant-card { display: grid; grid-template-rows: 220px 1fr; min-height: 760px; overflow: hidden; border: 1px solid rgba(16, 37, 54, 0.12); border-radius: 8px; background: #fbfaf7; }
+.restaurant-card { display: grid; grid-template-rows: 220px 1fr; min-height: 640px; overflow: hidden; border: 1px solid rgba(16, 37, 54, 0.12); border-radius: 8px; background: #fbfaf7; }
 .restaurant-media { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; padding: 0; border: 0; background: #d9e0df; color: inherit; cursor: pointer; text-align: left; }
 .restaurant-media::after { content: "View photos"; position: absolute; left: 16px; bottom: 16px; z-index: 3; display: inline-flex; align-items: center; min-height: 34px; padding: 0 12px; border-radius: 999px; background: rgba(16, 37, 54, 0.76); color: #fff; font-size: 0.72rem; font-weight: 800; letter-spacing: 0; text-transform: uppercase; opacity: 0; transform: translateY(8px); transition: opacity 180ms ease, transform 180ms ease, background 180ms ease; }
 .restaurant-media:hover::after,
@@ -476,7 +476,7 @@ p {
 .restaurant-media.is-static .restaurant-photo { opacity: 1; animation: none; }
 .restaurant-logo-badge { position: absolute; right: 16px; bottom: 16px; z-index: 2; display: grid; align-items: center; justify-items: center; width: min(52%, 190px); min-height: 78px; padding: 16px; border-radius: 8px; background: rgba(255, 255, 255, 0.94); box-shadow: 0 14px 34px rgba(16, 37, 54, 0.18); pointer-events: none; }
 .restaurant-logo-badge img { max-width: 100%; max-height: 74px; object-fit: contain; }
-.restaurant-details { display: grid; grid-template-rows: auto auto 1fr auto; gap: 18px; padding: 24px; }
+.restaurant-details { display: grid; grid-template-rows: auto auto 1fr; gap: 18px; padding: 24px; }
 .restaurant-details h3 { margin-bottom: 0; }
 .restaurant-description { margin: 0; color: #46535f; font-size: 0.95rem; line-height: 1.55; }
 .restaurant-info { display: grid; align-content: start; gap: 16px; }
@@ -484,11 +484,9 @@ p {
 .info-label { color: #f58029; font-size: 0.72rem; font-weight: 800; letter-spacing: 0; text-transform: uppercase; }
 .info-group p,
 .info-group a { margin: 0; color: #54616b; font-size: 0.92rem; line-height: 1.45; }
-.info-group a,
-.restaurant-detail-link { overflow-wrap: anywhere; color: #0c7680; font-weight: 800; }
+.info-group a { overflow-wrap: anywhere; color: #0c7680; font-weight: 800; }
 .restaurant-link-list { display: flex; flex-wrap: wrap; gap: 8px; }
 .restaurant-link-list a { display: inline-flex; align-items: center; min-height: 32px; padding: 0 10px; border: 1px solid rgba(12, 118, 128, 0.28); border-radius: 999px; background: #fff; font-size: 0.8rem; line-height: 1; }
-.restaurant-detail-link { display: inline-flex; align-items: center; width: fit-content; min-height: 42px; padding-top: 16px; border-top: 1px solid rgba(16, 37, 54, 0.1); font-size: 0.9rem; }
 
 .image-lightbox { position: fixed; inset: 0; z-index: 80; display: grid; place-items: center; padding: clamp(18px, 4vw, 48px); background: rgba(5, 18, 28, 0.86); }
 .image-lightbox-panel { position: relative; display: grid; gap: 14px; width: min(1120px, 100%); max-height: 92vh; color: #fff; }
