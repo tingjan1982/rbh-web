@@ -60,8 +60,8 @@ const contacts = [
 
 const restaurants = [
   { name: 'The Bayside Asian House', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/baysideasianlogo.jpg', hours: ['Mon-Tue: Closed', 'Wed-Fri: 5pm - 9pm', 'Sat-Sun: 11am - 2pm, 5pm - 9pm'], phone: '(07) 3488 0103', href: 'https://rabybayharbour.com.au/the-bayside-asian-house/' },
-  { name: "Chop 'n Chill", logo: 'https://rabybayharbour.com.au/wp-content/uploads/2023/12/chopchilllogo1.jpg', hours: ['Mon-Thu: 8am - 8:30pm', 'Fri: 8am - 9:30pm', 'Sat-Sun: 7am - 9:30pm'], phone: '(07) 3829 0267', href: 'https://rabybayharbour.com.au/chop-n-chill/' },
-  { name: 'Cold Rock Ice Creamery', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/coldrocklogo.jpg', hours: ['Mon-Thu: 12pm - 9pm', 'Fri: 12pm - 10pm', 'Sat: 11am - 10pm', 'Sun: 11am - 9pm'], phone: '(07) 3821 0069', href: 'https://rabybayharbour.com.au/cold-rock-ice-creamery/' },
+  { name: "Chop 'n Chill", logo: 'https://rabybayharbour.com.au/wp-content/uploads/2023/12/chopchilllogo1.jpg', hours: ['Mon-Thu: 8am - 8:30pm', 'Fri: 8am - 9:30pm', 'Sat-Sun: 7am - 9:30pm'], phone: '(07) 4801 1003', href: 'https://rabybayharbour.com.au/chop-n-chill/' },
+  { name: 'Cold Rock Ice Creamery', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/coldrocklogo.jpg', hours: ['Mon-Thu: 12pm - 8:30pm', 'Fri: 12pm - 9:30pm', 'Sat: 11am - 9:30pm', 'Sun: 11am - 8:30pm'], phone: '(07) 3821 0069', href: 'https://rabybayharbour.com.au/cold-rock-ice-creamery/' },
   { name: 'Crusoe Cafe', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/crusoelogo.jpg', hours: ['Mon-Fri: 6:30am - 1:45pm', 'Sat-Sun: 6:30am - 12pm'], phone: '(07) 3286 7757', href: 'https://rabybayharbour.com.au/crusoe-cafe/' },
   { name: 'Fiction Bar & Restaurant', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/fictionlogo.jpg', hours: ['Mon-Thu, Sun: 11:30am - 8:30pm', 'Fri-Sat: 11:30am - 11:30pm'], phone: '(07) 3488 2888', href: 'https://rabybayharbour.com.au/fiction/' },
   { name: "Hog's Breath Cafe", logo: 'https://rabybayharbour.com.au/wp-content/uploads/2022/01/hogslogo2.jpg', hours: ['Mon-Fri: 11:30am - 9pm', 'Sat-Sun: 11am - 9pm'], phone: '(07) 3286 9022', href: 'https://rabybayharbour.com.au/hogs/' },
@@ -88,7 +88,7 @@ const restaurantDetails = {
     description: 'East-meets-West dining with South East Asian street-style food, smoked-meat flavours, breakfast, lunch, dinner, cocktails, and inclusive vegan, vegetarian, and gluten-free options.',
     hours: ['Mon-Thu: 8am - 8:30pm', 'Fri: 8am - 9:30pm', 'Sat-Sun: 7am - 9:30pm'],
     contacts: [
-      { value: '(07) 3829 0267', href: 'tel:0738290267' },
+      { value: '(07) 4801 1003', href: 'tel:0748011003' },
       { value: 'richo.rabybay@chopnchill.com.au', href: 'mailto:richo.rabybay@chopnchill.com.au' },
     ],
     address: '25B/152 Shore St W, Cleveland QLD 4163',
@@ -99,7 +99,7 @@ const restaurantDetails = {
   },
   'Cold Rock Ice Creamery': {
     description: 'A playful ice cream stop where guests choose premium ice cream, gelato, or sorbet and mix in sweets, shakes, cakes, and take-home treats.',
-    hours: ['Mon-Thu: 12pm - 9pm', 'Fri: 12pm - 10pm', 'Sat: 11am - 10pm', 'Sun: 11am - 9pm'],
+    hours: ['Mon-Thu: 12pm - 8:30pm', 'Fri: 12pm - 9:30pm', 'Sat: 11am - 9:30pm', 'Sun: 11am - 8:30pm'],
     contacts: [{ value: '(07) 3821 0069', href: 'tel:0738210069' }],
     address: 'Shop 7, 152-156 Shore Street West, Cleveland QLD 4163',
     links: [
@@ -298,7 +298,7 @@ const businesses = [
     href: 'https://rabybayharbour.com.au/aft-projects/',
   },
   {
-    name: 'Aurora Realty Bayside',
+    name: 'Aurora Property Bayside',
     logo: '/assets/businesses/aurora-realty-logo.jpg',
     images: [
       '/assets/businesses/aurora-realty-1.jpg',
@@ -306,7 +306,7 @@ const businesses = [
       '/assets/businesses/aurora-realty-3.jpg',
     ],
     description: 'A property management team helping owners, developers, and investors maximise residential rental property value.',
-    hours: ['8:30am - 5pm'],
+    hours: ['Mon-Fri: 8:30am - 5:00pm'],
     contacts: [{ value: '07 3286 3660', href: 'tel:0732863660' }],
     links: [{ label: 'Website', href: 'https://www.aurorarealty.com.au/' }],
     href: 'https://rabybayharbour.com.au/aurora-realty-bayside/',
@@ -368,11 +368,21 @@ const businesses = [
   {
     name: 'LJ Hooker Property Centre',
     logo: '/assets/businesses/lj-hooker-logo.jpg',
-    images: [],
-    description: 'A large local real estate office helping families across sales and property management, with a strong record of industry recognition.',
-    hours: ['8:30am - 5pm'],
-    contacts: [{ value: '07 3286 2500', href: 'tel:0732862500' }],
-    links: [{ label: 'Website', href: 'https://propertycentre.ljhooker.com.au/' }],
+    images: [
+      '/assets/businesses/lj-hooker-1.jpg',
+      '/assets/businesses/lj-hooker-2.jpg',
+    ],
+    description: 'Redlands property specialists providing trusted advice, local expertise and exceptional results, backed by decades of experience in the local community.',
+    hours: ['Mon-Fri: 8:30am - 5pm', 'Sat: 10am - 3pm', 'Sun: Closed'],
+    contacts: [
+      { value: '07 3286 2500', href: 'tel:0732862500' },
+      { value: 'reception@ljhpropertycentre.com.au', href: 'mailto:reception@ljhpropertycentre.com.au' },
+    ],
+    links: [
+      { label: 'Website', href: 'https://propertycentre.ljhooker.com.au/' },
+      { label: 'Facebook', href: 'https://www.facebook.com/LJHPropertycentre/' },
+      { label: 'Request an Appraisal', href: 'https://www.ljhooker.com.au/property-appraisal?hsCtaAttrib=143014476571' },
+    ],
     href: 'https://rabybayharbour.com.au/lj-hooker-property-centre/',
   },
   {
