@@ -352,9 +352,11 @@ const businesses = [
     name: 'Harcourts Property Centre Cleveland',
     logo: '/assets/businesses/harcourts-logo.jpg',
     images: [
-      '/assets/businesses/harcourts-1.png',
-      '/assets/businesses/harcourts-2.png',
-      '/assets/businesses/harcourts-3.png',
+      '/assets/businesses/harcourts-1.jpg',
+      '/assets/businesses/harcourts-2.jpg',
+      '/assets/businesses/harcourts-3.jpg',
+      '/assets/businesses/harcourts-4.jpg',
+      '/assets/businesses/harcourts-5.jpg',
     ],
     description: 'A full-service real estate agency supporting sales across Cleveland, Raby Bay, Thornlands, Victoria Point, and the wider Bayside.',
     hours: ['Mon-Fri: 9am - 5pm', 'Sat-Sun: Closed'],
@@ -372,8 +374,9 @@ const businesses = [
       '/assets/businesses/lj-hooker-1.jpg',
       '/assets/businesses/lj-hooker-2.jpg',
     ],
+    imagePositions: ['center 34%', 'center 24%'],
     description: 'Redlands property specialists providing trusted advice, local expertise and exceptional results, backed by decades of experience in the local community.',
-    hours: ['Mon-Fri: 8:30am - 5pm', 'Sat: 10am - 3pm', 'Sun: Closed'],
+    hours: ['Mon-Fri: 8am - 5pm', 'Sat: 10am - 3pm', 'Sun: Closed'],
     contacts: [
       { value: '07 3286 2500', href: 'tel:0732862500' },
       { value: 'reception@ljhpropertycentre.com.au', href: 'mailto:reception@ljhpropertycentre.com.au' },
@@ -687,7 +690,10 @@ function BusinessMedia({ business, onOpen }) {
           src={image}
           alt=""
           aria-hidden="true"
-          style={{ '--slide-index': index }}
+          style={{
+            '--slide-index': index,
+            '--image-position': business.imagePositions?.[index] || 'center',
+          }}
         />
       ))}
       {business.images.length > 0 && (
