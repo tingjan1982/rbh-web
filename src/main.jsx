@@ -63,7 +63,7 @@ const restaurants = [
   { name: "Chop 'n Chill", logo: 'https://rabybayharbour.com.au/wp-content/uploads/2023/12/chopchilllogo1.jpg', hours: ['Mon-Thu: 8am - 8:30pm', 'Fri: 8am - 9:30pm', 'Sat-Sun: 7am - 9:30pm'], phone: '(07) 4801 1003', href: 'https://rabybayharbour.com.au/chop-n-chill/' },
   { name: 'Cold Rock Ice Creamery', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/coldrocklogo.jpg', hours: ['Mon-Thu: 12pm - 8:30pm', 'Fri: 12pm - 9:30pm', 'Sat: 11am - 9:30pm', 'Sun: 11am - 8:30pm'], phone: '(07) 3821 0069', href: 'https://rabybayharbour.com.au/cold-rock-ice-creamery/' },
   { name: 'Crusoe Cafe', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/crusoelogo.jpg', hours: ['Mon-Fri: 6:30am - 1:45pm', 'Sat-Sun: 6:30am - 12pm'], phone: '(07) 3286 7757', href: 'https://rabybayharbour.com.au/crusoe-cafe/' },
-  { name: 'Fiction Bar & Restaurant', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/fictionlogo.jpg', hours: ['Mon-Thu, Sun: 11:30am - 8:30pm', 'Fri-Sat: 11:30am - 11:30pm'], phone: '(07) 3488 2888', href: 'https://rabybayharbour.com.au/fiction/' },
+  { name: 'Fiction Bar & Restaurant', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/fictionlogo.jpg', hours: ['11:30am - Late, 7 Days'], phone: '(07) 3488 2888', href: 'https://rabybayharbour.com.au/fiction/' },
   { name: "Hog's Breath Cafe", logo: 'https://rabybayharbour.com.au/wp-content/uploads/2022/01/hogslogo2.jpg', hours: ['Mon-Fri: 11:30am - 9pm', 'Sat-Sun: 11am - 9pm'], phone: '(07) 3286 9022', href: 'https://rabybayharbour.com.au/hogs/' },
   { name: 'K Soul BBQ', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2023/12/kbbqlogo.jpg', hours: ['Sun-Thurs: 11:30am - 3pm, 5:30pm - 9:30pm', 'Fri-Sat: 11:30am - 3pm, 5:30pm - 10pm'], phone: '(07) 3286 1949', href: 'https://rabybayharbour.com.au/k-soul-bbq/' },
   { name: 'Mamma Mia Trattoria Pizzeria', logo: 'https://rabybayharbour.com.au/wp-content/uploads/2018/10/mammamialogo.jpg', hours: ['Mon-Tue: 5pm - 9pm', 'Wed-Thu: 11am - 2:30pm, 4:30pm - 9pm', 'Fri-Sat: 11am - 2:30pm, 4:30pm - 9:30pm', 'Sun: 11am - 3pm, 4:30pm - 9pm'], phone: '(07) 3488 0330', href: 'https://rabybayharbour.com.au/mamma-mia/' },
@@ -120,8 +120,8 @@ const restaurantDetails = {
     ],
   },
   'Fiction Bar & Restaurant': {
-    description: 'A waterfront bar and restaurant with seasonal gastrobar dishes, drinks, weekend lunches, relaxed dinners, and function space.',
-    hours: ['Mon-Thu, Sun: 11:30am - 8:30pm', 'Fri-Sat: 11:30am - 11:30pm'],
+    description: 'A Modern Asian Infusion Restaurant with breathtaking marina views, a relaxed vibe and an extensive cocktail list. Not to mention a private function room for your special occasion.',
+    hours: ['11:30am - Late, 7 Days'],
     contacts: [
       { value: '(07) 3488 2888', href: 'tel:0734882888' },
       { value: 'info@fictionbar.com.au', href: 'mailto:info@fictionbar.com.au' },
