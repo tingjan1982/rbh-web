@@ -7,6 +7,7 @@ const navItems = [
   ['Dining', '/dining'],
   ['Businesses', '/businesses'],
   ['Leasing', '/leasing'],
+  ['News & Events', '/news-events'],
   ['Contact Us', '/#contact'],
 ]
 
@@ -41,10 +42,47 @@ const experiences = [
   },
 ]
 
+const homeHighlight = {
+  eyebrow: 'Easy day out',
+  title: 'Ride to Cleveland for just 50c.',
+  text: 'Catch the train, step into the harbour precinct, wander the waterfront, settle in for lunch or dinner, then head home with another 50c fare.',
+  note: 'Cleveland Station is a short stroll from the marina, restaurants, events, and bay views.',
+  images: [
+    '/assets/cleveland-train-highlight-1.webp',
+    '/assets/cleveland-train-highlight-2.webp',
+    '/assets/cleveland-train-highlight-3.webp',
+  ],
+}
+
+const updates = [
+  {
+    id: 'adventurefest-2026',
+    type: 'Event',
+    date: '2026-05-16',
+    dateLabel: '16 May 2026',
+    title: 'Redlands Coast AdventureFest brings outdoor energy to the harbour.',
+    summary: 'AdventureFest recently brought outdoor adventure, community activities, local food experiences, markets, and family-friendly entertainment to Raby Bay Harbour Park.',
+    href: 'https://www.redland.qld.gov.au/News-events-and-have-your-say/Council-events/Redlands-Coast-AdventureFest',
+    cta: 'View AdventureFest details',
+  },
+  {
+    id: 'raby-bay-marina-revitalisation',
+    type: 'News',
+    date: '2026-03-19',
+    dateLabel: '19 March 2026',
+    title: 'First steps in revitalisation of Raby Bay Marina.',
+    summary: 'Redland City Council has supported early steps toward revitalising Raby Bay Marina, with the update highlighting future opportunities for improved public areas and commercial activity.',
+    href: 'https://www.redlandscoasttoday.com.au/2026/03/first-steps-in-revitalisation-of-raby-bay-marina/',
+    cta: 'Read the news article',
+  },
+]
+
+const updateFilters = ['All', 'News', 'Event']
+
 const contacts = [
   {
     title: 'Centre Management',
-    address: 'Suite 20, Level 1, 152-166 Shore St W. Cleveland QLD 4163',
+    address: 'Suite 21, Level 1, 152-166 Shore St W. Cleveland QLD 4163',
     hours: 'Mon-Fri: from 9am - 4pm',
     email: 'payable@rabybayharbour.com',
     phone: '+61 7 3050 3068',
@@ -709,6 +747,131 @@ function getListingSlug(name) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 }
 
+function getSortedUpdates(items = updates) {
+  return [...items].sort((a, b) => b.date.localeCompare(a.date))
+}
+
+function getUpdateMonthLabel(update) {
+  const [year, month] = update.date.split('-')
+  const monthNames = {
+    '01': 'January',
+    '02': 'February',
+    '03': 'March',
+    '04': 'April',
+    '05': 'May',
+    '06': 'June',
+    '07': 'July',
+    '08': 'August',
+    '09': 'September',
+    '10': 'October',
+    '11': 'November',
+    '12': 'December',
+  }
+
+  return `${monthNames[month]} ${year}`
+}
+
+function getUpdateGroups(items) {
+  return items.reduce((groups, update) => {
+    const label = getUpdateMonthLabel(update)
+    const current = groups.find((group) => group.label === label)
+
+    if (current) {
+      current.items.push(update)
+    } else {
+      groups.push({ label, items: [update] })
+    }
+
+    return groups
+  }, [])
+}
+
+function UpdateCard({ update, isCompact = false }) {
+  return (
+    <article className={isCompact ? 'event-update-card is-compact' : 'event-update-card'} id={`update-${update.id}`}>
+      <div className="update-meta">
+        <span>{update.type}</span>
+        <time dateTime={update.date}>{update.dateLabel}</time>
+      </div>
+      <h3>{update.title}</h3>
+      <p>{update.summary}</p>
+      <a className="section-link" href={update.href} target="_blank" rel="noreferrer">
+        {update.cta}
+      </a>
+    </article>
+  )
+}
+
+function NewsEventsPage() {
+  const [activeFilter, setActiveFilter] = useState('All')
+  const sortedUpdates = getSortedUpdates()
+  const filteredUpdates = sortedUpdates.filter((update) => activeFilter === 'All' || update.type === activeFilter)
+  const updateGroups = getUpdateGroups(filteredUpdates)
+
+  return (
+    <>
+      <Header />
+      <main>
+        <section className="dining-showcase" aria-labelledby="news-events-title">
+          <img src="/assets/raby-bay-harbour-aerial.jpg" alt="" className="dining-showcase-image" />
+          <div className="dining-showcase-overlay" />
+          <div className="dining-showcase-content">
+            <p className="eyebrow">News & Events</p>
+            <h1 id="news-events-title">What is happening around the harbour.</h1>
+            <p>
+              Follow precinct news, community events, local activations, and updates shaping
+              Raby Bay Harbour and Cleveland.
+            </p>
+          </div>
+        </section>
+
+        <section className="updates-hub" aria-label="News and events archive">
+          <aside className="updates-sidebar" aria-label="News and events navigation">
+            <div className="updates-filter-tabs" aria-label="Filter updates">
+              {updateFilters.map((filter) => (
+                <button
+                  className={activeFilter === filter ? 'is-active' : undefined}
+                  type="button"
+                  key={filter}
+                  onClick={() => setActiveFilter(filter)}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+            <nav className="updates-month-nav" aria-label="Browse updates by month">
+              {updateGroups.map((group) => (
+                <div key={group.label}>
+                  <strong>{group.label}</strong>
+                  {group.items.map((update) => (
+                    <a href={`#update-${update.id}`} key={update.id}>
+                      {update.title}
+                    </a>
+                  ))}
+                </div>
+              ))}
+            </nav>
+          </aside>
+
+          <div className="updates-feed">
+            {updateGroups.map((group) => (
+              <section className="update-month-group" id={`updates-${group.label.toLowerCase().replace(/\s+/g, '-')}`} key={group.label}>
+                <h2>{group.label}</h2>
+                <div className="updates-list">
+                  {group.items.map((update) => (
+                    <UpdateCard update={update} key={update.id} />
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  )
+}
+
 function DiningQuickDirectory() {
   return (
     <section className="quick-directory" aria-labelledby="quick-dining-title">
@@ -896,6 +1059,31 @@ function HomePage() {
           </div>
         </section>
 
+        <section className="home-highlight" aria-label="Train travel to Raby Bay Harbour">
+          <div className="home-highlight-copy">
+            <p className="eyebrow">{homeHighlight.eyebrow}</p>
+            <h2>{homeHighlight.title}</h2>
+            <p>{homeHighlight.text}</p>
+          </div>
+          <div className="highlight-media" style={{ '--image-count': homeHighlight.images.length }}>
+            {homeHighlight.images.map((image, index) => (
+              <img
+                className="highlight-photo"
+                src={image}
+                alt=""
+                aria-hidden="true"
+                key={image}
+                style={{ '--slide-index': index }}
+              />
+            ))}
+            <div className="highlight-badge">
+              <strong>50c</strong>
+              <span>each way by train</span>
+            </div>
+            <p>{homeHighlight.note}</p>
+          </div>
+        </section>
+
         <section className="experience-grid" id="explore" aria-label="Raby Bay Harbour sections">
           {experiences.map((item) => (
             <a
@@ -926,21 +1114,18 @@ function HomePage() {
 
         <section className="waterfront-band" id="event-detail">
           <div className="band-copy">
-            <h2 className="event-title">Events</h2>
-            <h3 className="event-feature-title">Redlands Coast AdventureFest brings outdoor energy to the harbour.</h3>
-            <p>
-              Redlands Coast AdventureFest runs from 15 to 24 May 2026, with the
-              free AdventureFest Fun Day recently hosted at Raby Bay Harbour Park on
-              Saturday 16 May 2026. Expect outdoor adventure, community activities,
-              local food experiences, markets, and family-friendly entertainment.
+            <h2 className="event-title">News & Events</h2>
+            <p className="event-intro">
+              Follow community events, local activations, and precinct updates shaping
+              life around Raby Bay Harbour and Cleveland.
             </p>
-            <a
-              className="section-link"
-              href="https://www.redland.qld.gov.au/News-events-and-have-your-say/Council-events/Redlands-Coast-AdventureFest"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View AdventureFest details
+            <div className="event-update-grid">
+              {getSortedUpdates().slice(0, 2).map((update) => (
+                <UpdateCard update={update} isCompact key={update.id} />
+              ))}
+            </div>
+            <a className="event-view-all" href="/news-events">
+              View all news & events
             </a>
           </div>
         </section>
@@ -1169,6 +1354,10 @@ function App() {
 
   if (path === '/leasing') {
     return <LeasingPage />
+  }
+
+  if (path === '/news-events') {
+    return <NewsEventsPage />
   }
 
   return <HomePage />
