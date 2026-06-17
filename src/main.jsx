@@ -372,7 +372,14 @@ const businesses = [
   {
     name: 'E23 Hair',
     logo: '/assets/businesses/e23-hair-logo.jpg',
-    images: ['/assets/businesses/e23-hair-1.jpg'],
+    images: [
+      '/assets/businesses/e23-hair-1.jpg',
+      '/assets/businesses/e23-hair-2.jpg',
+      '/assets/businesses/e23-hair-3.jpg',
+      '/assets/businesses/e23-hair-4.jpg',
+      '/assets/businesses/e23-hair-5.jpg',
+    ],
+    imagePositions: ['center', 'center', 'center 44%', 'center', 'center 30%'],
     description: 'A luxury hair studio focused on bespoke colour, precision cutting, premium extensions, and a refined salon experience.',
     hours: ['Appointment only'],
     contacts: [
@@ -731,6 +738,7 @@ function BusinessMedia({ business, onOpen }) {
           style={{
             '--slide-index': index,
             '--image-position': business.imagePositions?.[index] || 'center',
+            '--image-fit': business.imageFits?.[index] || 'cover',
           }}
         />
       ))}
