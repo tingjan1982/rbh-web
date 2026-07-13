@@ -449,7 +449,7 @@ const businesses = [
     ],
     links: [
       { label: 'Website', href: 'https://www.sdaservices.com.au/' },
-      { label: 'Facebook', href: 'https://www.facebook.com/sdaservices/' },
+      { label: 'Facebook', href: 'https://www.facebook.com/people/SDA-Services/100088215822973/' },
     ],
     href: 'https://rabybayharbour.com.au/sda-services/',
   },
@@ -482,7 +482,7 @@ const businesses = [
     hours: ['Mon: Closed', 'Tue-Thu: 10am - 4pm', 'Fri: 10am - 7pm', 'Sat-Sun: 10am - 4pm'],
     contacts: [
       { value: '0412 747 716', href: 'tel:0412747716' },
-      { value: 'debmcc6@outlook.com', href: 'mailto:debmcc6@outlook.com' },
+      { value: 'hello@straddievarious.com.au', href: 'mailto:hello@straddievarious.com.au' },
     ],
     links: [
       { label: 'Website', href: 'https://straddievarious.com.au/' },
