@@ -350,6 +350,25 @@ const businesses = [
     href: 'https://rabybayharbour.com.au/aurora-realty-bayside/',
   },
   {
+    name: 'Aussie Home Loans',
+    logo: '/assets/businesses/aussie-home-loans-logo.png',
+    images: [
+      '/assets/businesses/aussie-home-loans-1.jpg',
+      '/assets/businesses/aussie-home-loans-2.jpg',
+      '/assets/businesses/aussie-home-loans-3.jpg',
+    ],
+    imagePositions: ['center', 'center 42%', 'center'],
+    description: 'Aussie Cleveland offers expert home loan advice, comparing 20+ lenders for the best fit. With phone, virtual, or in-store options, we make it simple. Proudly serving the Redlands since 2002.',
+    hours: ['Mon-Fri: 9am - 5pm', 'Sat-Sun: By appointment'],
+    contacts: [{ value: '07 3245 1330', href: 'tel:0732451330' }],
+    links: [
+      { label: 'Website', href: 'https://www.aussie.com.au/mortgage-broker/qld/cleveland/' },
+      { label: 'Instagram', href: 'https://www.instagram.com/aussie_cleveland/' },
+      { label: 'Facebook', href: 'https://www.facebook.com/share/14nzUcsVPbF/' },
+    ],
+    href: 'https://www.aussie.com.au/mortgage-broker/qld/cleveland/',
+  },
+  {
     name: 'Blue Harbour Financial Partners',
     logo: '/assets/businesses/blue-harbour-logo.jpg',
     images: [
