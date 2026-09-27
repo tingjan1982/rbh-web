@@ -30,6 +30,18 @@ img {
   max-width: 100%;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -100,6 +112,47 @@ nav a.is-active {
 
 .hero-image {
   object-fit: cover;
+}
+
+.event-promo {
+  padding: clamp(24px, 4vw, 48px) clamp(18px, 4vw, 56px);
+  background: #fff;
+}
+
+.event-promo-link {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  color: inherit;
+  box-shadow: 0 18px 44px rgba(12, 35, 48, 0.12);
+}
+
+.event-promo-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.event-promo-cta {
+  position: absolute;
+  right: clamp(18px, 4vw, 56px);
+  bottom: clamp(18px, 4vw, 40px);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 22px;
+  background: #175c8a;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  box-shadow: 0 14px 32px rgba(12, 35, 48, 0.24);
+}
+
+.event-promo-link:focus-visible .event-promo-cta,
+.event-promo-link:hover .event-promo-cta {
+  background: #f58029;
 }
 
 .hero-overlay {
@@ -962,6 +1015,273 @@ p {
   color: #7b858d;
 }
 
+.event-detail-page {
+  background: #f7f3ed;
+}
+
+.standalone-backyard-page {
+  min-height: 100vh;
+  background: #f7f3ed;
+  font-family: Poppins, Raleway, Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.backyard-hero {
+  position: relative;
+  min-height: auto;
+  overflow: hidden;
+  display: block;
+  background: #71bee3;
+}
+
+.backyard-hero-image {
+  width: 100%;
+  height: auto;
+  max-width: none;
+}
+
+.backyard-hero-content {
+  display: grid;
+  gap: 20px;
+  max-width: 880px;
+  padding: clamp(92px, 13vw, 156px) clamp(20px, 5vw, 72px) clamp(58px, 8vw, 96px);
+  color: #fff;
+}
+
+.backyard-hero-content h1 {
+  margin: 0;
+  color: #f7f0e4;
+  font-size: clamp(4rem, 10vw, 9rem);
+  line-height: 0.9;
+}
+
+.backyard-hero-content p:not(.eyebrow) {
+  max-width: 560px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+  line-height: 1.25;
+}
+
+.backyard-intro,
+.backyard-feature,
+.backyard-travel {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(320px, 1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(58px, 8vw, 108px) clamp(20px, 5vw, 72px);
+}
+
+.backyard-intro {
+  background: #f7f3ed;
+}
+
+.backyard-intro h2,
+.backyard-feature h2,
+.backyard-travel h2,
+.backyard-section-heading h2 {
+  margin: 0;
+  color: #102536;
+  font-size: clamp(2.25rem, 5vw, 5.2rem);
+  line-height: 0.98;
+}
+
+.backyard-intro-copy {
+  display: grid;
+  gap: 18px;
+}
+
+.backyard-intro-copy p,
+.backyard-feature p,
+.backyard-travel p,
+.backyard-activity-card p {
+  margin: 0;
+  color: #46535f;
+  font-size: clamp(1rem, 1.35vw, 1.14rem);
+  line-height: 1.65;
+}
+
+.backyard-date-band {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.95fr) minmax(260px, 0.65fr);
+  gap: 24px;
+  align-items: center;
+  padding: clamp(36px, 6vw, 72px) clamp(20px, 5vw, 72px);
+  background: #175c8a;
+  color: #fff;
+}
+
+.backyard-date-card {
+  display: grid;
+  gap: 12px;
+}
+
+.backyard-date-card span {
+  color: #ffbd26;
+  font-size: 0.86rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.backyard-date-card strong {
+  font-size: clamp(1.55rem, 3.2vw, 3rem);
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.backyard-date-band p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  line-height: 1.4;
+}
+
+.backyard-feature {
+  background: #fff;
+}
+
+.backyard-feature img,
+.backyard-travel img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(16, 37, 54, 0.16);
+}
+
+.backyard-feature div {
+  display: grid;
+  gap: 18px;
+}
+
+.backyard-activities {
+  display: grid;
+  gap: clamp(26px, 4vw, 44px);
+  padding: clamp(58px, 8vw, 108px) clamp(20px, 5vw, 72px);
+  background: #102536;
+  color: #fff;
+}
+
+.backyard-section-heading {
+  display: grid;
+  gap: 14px;
+  max-width: 840px;
+}
+
+.backyard-activities .backyard-section-heading h2 {
+  color: #f7f0e4;
+}
+
+.backyard-activity-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.backyard-activity-card {
+  display: grid;
+  grid-template-rows: 260px 1fr;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.backyard-activity-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.backyard-activity-card div {
+  display: grid;
+  gap: 10px;
+  padding: 22px;
+}
+
+.backyard-activity-card h3 {
+  margin: 0;
+  color: #ffbd26;
+  font-size: 1.25rem;
+  line-height: 1.15;
+}
+
+.backyard-activity-card p {
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.95rem;
+}
+
+.backyard-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  background: #ffbd26;
+}
+
+.backyard-gif-panel {
+  display: grid;
+  place-items: center;
+  min-height: clamp(280px, 42vw, 560px);
+  padding: clamp(24px, 5vw, 58px);
+}
+
+.backyard-gif-panel img {
+  width: min(520px, 100%);
+  max-height: 440px;
+  object-fit: contain;
+}
+
+.backyard-travel {
+  background: #f7f3ed;
+}
+
+.backyard-travel > div {
+  display: grid;
+  gap: 18px;
+}
+
+.backyard-travel h3 {
+  margin: 0;
+  color: #175c8a;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  line-height: 1.35;
+}
+
+.backyard-travel-list {
+  display: grid;
+  gap: 14px;
+}
+
+.backyard-travel-list strong {
+  color: #102536;
+}
+
+.backyard-partners {
+  display: grid;
+  gap: 26px;
+  justify-items: center;
+  padding: clamp(46px, 7vw, 82px) clamp(20px, 5vw, 72px);
+  background: #fff;
+  text-align: center;
+}
+
+.backyard-partners > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(28px, 6vw, 72px);
+  align-items: center;
+  justify-content: center;
+}
+
+.backyard-partners img {
+  max-width: min(240px, 42vw);
+  max-height: 96px;
+  object-fit: contain;
+}
+
+.backyard-partners .event-view-all {
+  border-color: rgba(23, 92, 138, 0.2);
+  background: #175c8a;
+  color: #fff;
+}
+
 .contact-card p {
   color: #54616b;
 }
@@ -1224,6 +1544,11 @@ footer {
   .event-update-grid,
   .waterfront-band,
   .updates-hub,
+  .backyard-intro,
+  .backyard-date-band,
+  .backyard-feature,
+  .backyard-travel,
+  .backyard-split,
   .leasing-intro,
   .leasing-summary-layout,
   .leasing-option-grid,
@@ -1253,6 +1578,7 @@ footer {
   }
 
   .experience-grid,
+  .backyard-activity-grid,
   .restaurant-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1278,6 +1604,23 @@ footer {
     min-height: 68vh;
   }
 
+  .event-promo {
+    padding: 18px 18px 24px;
+  }
+
+  .event-promo-link {
+    overflow: visible;
+  }
+
+  .event-promo-cta {
+    position: static;
+    display: flex;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    font-size: 0.76rem;
+  }
+
   h1 {
     font-size: clamp(2.7rem, 15vw, 4.2rem);
   }
@@ -1298,6 +1641,13 @@ footer {
   .contact,
   .band-copy,
   .updates-hub,
+  .backyard-hero-content,
+  .backyard-intro,
+  .backyard-date-band,
+  .backyard-feature,
+  .backyard-activities,
+  .backyard-travel,
+  .backyard-partners,
   .leasing-intro,
   .leasing-summary,
   .quick-directory,
@@ -1342,8 +1692,22 @@ footer {
 
   .experience-grid,
   .quick-directory-grid,
+  .backyard-activity-grid,
+  .backyard-split,
   .restaurant-grid {
     grid-template-columns: 1fr;
+  }
+
+  .backyard-hero {
+    min-height: auto;
+  }
+
+  .backyard-hero-content h1 {
+    font-size: clamp(3.5rem, 18vw, 5.6rem);
+  }
+
+  .backyard-activity-card {
+    grid-template-rows: 240px 1fr;
   }
 
   .experience-grid {

@@ -56,6 +56,16 @@ const homeHighlight = {
 
 const updates = [
   {
+    id: 'bayside-backyard-2026',
+    type: 'Event',
+    date: '2026-10-31',
+    dateLabel: '31 October - 1 November 2026',
+    title: 'Bayside Backyard brings free community fun to Raby Bay Harbour.',
+    summary: 'A jam-packed weekend of free, community-led activities with morning movement, local flavour, waterfront moments, and golden hour entertainment.',
+    href: '/events/bayside-backyard/index.html',
+    cta: 'View event details',
+  },
+  {
     id: 'adventurefest-2026',
     type: 'Event',
     date: '2026-05-16',
@@ -78,6 +88,29 @@ const updates = [
 ]
 
 const updateFilters = ['All', 'News', 'Event']
+
+const baysideBackyardActivities = [
+  {
+    title: 'Morning movement',
+    text: 'Find your stride and bring your energy to the harbour.',
+    image: '/assets/events/bayside-backyard-tile-8.jpg',
+  },
+  {
+    title: 'Waterfront moments',
+    text: 'Gather, relax, and make the most of the marina setting.',
+    image: '/assets/events/bayside-backyard-tile-4.jpg',
+  },
+  {
+    title: 'Local flavour',
+    text: 'Settle in beside the water and enjoy the precinct through the day.',
+    image: '/assets/events/bayside-backyard-tile-5.png',
+  },
+  {
+    title: 'Golden hour entertainment',
+    text: 'Roll into afternoon and evening activity around the harbour.',
+    image: '/assets/events/bayside-backyard-tile-7.jpg',
+  },
+]
 
 const contacts = [
   {
@@ -814,6 +847,8 @@ function getUpdateGroups(items) {
 }
 
 function UpdateCard({ update, isCompact = false }) {
+  const isExternal = /^https?:\/\//.test(update.href)
+
   return (
     <article className={isCompact ? 'event-update-card is-compact' : 'event-update-card'} id={`update-${update.id}`}>
       <div className="update-meta">
@@ -822,10 +857,114 @@ function UpdateCard({ update, isCompact = false }) {
       </div>
       <h3>{update.title}</h3>
       <p>{update.summary}</p>
-      <a className="section-link" href={update.href} target="_blank" rel="noreferrer">
+      <a className="section-link" href={update.href} target={isExternal ? '_blank' : undefined} rel={isExternal ? 'noreferrer' : undefined}>
         {update.cta}
       </a>
     </article>
+  )
+}
+
+function BaysideBackyardPage() {
+  return (
+    <main className="event-detail-page standalone-backyard-page">
+        <section className="backyard-hero" aria-labelledby="bayside-backyard-title">
+          <img
+            src="/assets/events/bayside-backyard-banner.jpg"
+            alt="Bayside Backyard Raby Bay Harbour, 31 October and 1 November"
+            className="backyard-hero-image"
+          />
+          <h1 id="bayside-backyard-title" className="sr-only">Bayside Backyard</h1>
+        </section>
+
+        <section className="backyard-intro">
+          <div>
+            <p className="eyebrow">Raby Bay Harbour</p>
+            <h2>Soak up those waterfront moments with morning movement and local flavour, rolling into golden hour entertainment.</h2>
+          </div>
+          <div className="backyard-intro-copy">
+            <p>
+              Join us for a jam-packed weekend of free, community-led activities. Whether you just want
+              a space to gather and relax with friends, or need an excuse to get the whole family up
+              and moving, Bayside Backyard has something to keep everybody happy.
+            </p>
+            <p>
+              What better way to prepare for summer than by heading down to Bayside Backyard to soak
+              up the sun and have some fun.
+            </p>
+          </div>
+        </section>
+
+        <section className="backyard-date-band" aria-label="Bayside Backyard event details">
+          <div className="backyard-date-card">
+            <span>Save the date</span>
+            <strong>Saturday October 31st, 9am-7pm</strong>
+            <strong>Sunday November 1st, 9am-2pm</strong>
+          </div>
+          <p>Raby Bay Harbour, 152-166 Shore St W, Cleveland</p>
+        </section>
+
+        <section className="backyard-feature">
+          <img src="/assets/events/bayside-backyard-static-3.png" alt="" />
+          <div>
+            <p className="eyebrow">Free activities</p>
+            <h2>Check out our free activities.</h2>
+            <p>
+              The full program is coming soon, with experiences designed to bring the harbour to life
+              across the weekend.
+            </p>
+          </div>
+        </section>
+
+        <section className="backyard-activities" id="event-program" aria-labelledby="event-program-title">
+          <div className="backyard-section-heading">
+            <p className="eyebrow">Program</p>
+            <h2 id="event-program-title">Full program coming soon.</h2>
+          </div>
+          <div className="backyard-activity-grid">
+            {baysideBackyardActivities.map((activity) => (
+              <article className="backyard-activity-card" key={activity.title}>
+                <img src={activity.image} alt="" />
+                <div>
+                  <h3>{activity.title}</h3>
+                  <p>{activity.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="backyard-split">
+          <div className="backyard-gif-panel">
+            <img src="/assets/events/bayside-backyard-moving-1.gif" alt="" />
+          </div>
+          <div className="backyard-gif-panel">
+            <img src="/assets/events/bayside-backyard-moving-2.gif" alt="" />
+          </div>
+        </section>
+
+        <section className="backyard-travel">
+          <img src="/assets/events/bayside-backyard-harbour.jpg" alt="" />
+          <div>
+            <p className="eyebrow">Getting here</p>
+            <h2>How do I get to the event?</h2>
+            <h3>Located at 152-166 Shore St W, Cleveland, Raby Bay Harbour sits right next to key transit hubs making it easy to get to.</h3>
+            <div className="backyard-travel-list">
+              <p><strong>Parking:</strong> Additional car parking available at 122 Middle Street, with a short walk across the street.</p>
+              <p><strong>Train:</strong> Cleveland Line and get off at Cleveland train station which is 250m, or a 3-4 minute walk, via Shore Street West.</p>
+              <p><strong>Bus:</strong> Middle Street Bus Station, Stops A and B, is a 400m, or 5-6 minute walk, via Shore Street West.</p>
+              <p><strong>Bus routes:</strong> Birkdale Route 255, Capalaba Route 250 or 252, Alexandra Hills Route 250 or 252, Thornlands Route 274 or 275, Victoria Point Route 250, and Redland Bay Route 250.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="backyard-partners" aria-label="Event partners">
+          <p className="eyebrow">Presented with</p>
+          <div>
+            <img src="/assets/raby-bay-logo.png" alt="Raby Bay Harbour" />
+            <img src="/assets/events/fourfold-logo.png" alt="Fourfold Studio" />
+          </div>
+        </section>
+      </main>
   )
 }
 
@@ -1074,6 +1213,21 @@ function HomePage() {
       <Header />
 
       <main id="home">
+        <section className="event-promo" aria-label="Bayside Backyard event promotion">
+          <a
+            className="event-promo-link"
+            href="/events/bayside-backyard/index.html"
+            aria-label="View Bayside Backyard event details"
+          >
+            <img
+              src="/assets/events/bayside-backyard-home-hero.jpg"
+              alt="Bayside Backyard at Raby Bay Harbour, 31 October and 1 November"
+              className="event-promo-image"
+            />
+            <span className="event-promo-cta">View event details</span>
+          </a>
+        </section>
+
         <section className="hero" aria-labelledby="hero-title">
           <img src="/assets/raby-bay-harbour-aerial.jpg" alt="" className="hero-image" />
           <div className="hero-overlay" />
@@ -1385,6 +1539,11 @@ function App() {
 
   if (path === '/news-events') {
     return <NewsEventsPage />
+  }
+
+  if (path === '/events/bayside-backyard' || path === '/events/bayside-backyard/') {
+    window.location.replace('/events/bayside-backyard/index.html')
+    return null
   }
 
   return <HomePage />
