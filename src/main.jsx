@@ -1220,7 +1220,7 @@ function HomePage() {
             aria-label="View Bayside Backyard event details"
           >
             <img
-              src="/assets/events/bayside-backyard-home-hero.jpg"
+              src="/assets/events/bayside-backyard-banner-v2.png"
               alt="Bayside Backyard at Raby Bay Harbour, 31 October and 1 November"
               className="event-promo-image"
             />

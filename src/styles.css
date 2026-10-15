@@ -135,7 +135,8 @@ nav a.is-active {
 
 .event-promo-cta {
   position: absolute;
-  right: clamp(18px, 4vw, 56px);
+  left: 50%;
+  transform: translateX(-50%);
   bottom: clamp(18px, 4vw, 40px);
   z-index: 2;
   display: inline-flex;
@@ -1614,6 +1615,7 @@ footer {
 
   .event-promo-cta {
     position: static;
+    transform: none;
     display: flex;
     justify-content: center;
     min-height: 44px;

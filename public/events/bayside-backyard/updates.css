@@ -1,0 +1,112 @@
+/* October 2026 event updates. Keep these sections independent of fixed Fluid Engine rows. */
+.backyard-update {
+  box-sizing: border-box;
+  padding: clamp(32px, 5vw, 72px) max(20px, 4vw);
+  color: #214c60;
+  font-family: Poppins, sans-serif;
+  text-align: center;
+  background: #fff;
+}
+.backyard-update h2 {
+  color: inherit;
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.4;
+  font-weight: 700;
+  margin: 0 auto 32px;
+}
+.backyard-activities, .backyard-program-grid {
+  display: grid;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+.backyard-activities { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.backyard-program-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1000px; }
+.backyard-update img { display: block; width: 100%; height: auto; }
+.backyard-booking {
+  display: inline-block;
+  box-sizing: border-box;
+  background: #2f6c90;
+  color: #fff !important;
+  padding: 14px 24px;
+  margin-top: 24px;
+  text-decoration: none;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.backyard-booking:hover { background: #214c60; }
+.backyard-booking:focus-visible { outline: 3px solid #242854; outline-offset: 4px; }
+.backyard-consultation h2, .backyard-consultation p { max-width: 900px; }
+.backyard-consultation p { margin: 24px auto 0; line-height: 1.7; text-align: left; }
+.backyard-consultation iframe { display: block; width: 100%; max-width: 900px; height: 600px; margin: auto; border: 0; }
+@media (max-width: 767px) {
+  .backyard-activities { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .backyard-program-grid { grid-template-columns: minmax(0, 1fr); max-width: 500px; }
+}
+@media (max-width: 480px) {
+  .backyard-activities { grid-template-columns: minmax(0, 1fr); max-width: 360px; }
+}
+
+/* Live text timetable, matching the supplied two-day program artwork. */
+@font-face {
+  font-family: 'Amatic SC';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/assets/fonts/amatic-sc-bold.ttf') format('truetype');
+}
+.backyard-program-grid { gap: 40px; }
+.backyard-program-day { min-width: 0; color: #242854; text-align: left; }
+.backyard-program-day .backyard-day-title {
+  margin: 0 0 28px;
+  padding: 10px 16px 12px;
+  background: #242854;
+  color: #fff;
+  font-family: 'Amatic SC', 'Arial Narrow', sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.backyard-program-list {
+  display: grid;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.backyard-program-card {
+  padding: 24px;
+  margin: 0;
+  background: #ceeaf1;
+}
+.backyard-program-card:nth-child(3n + 2) { background: #fbe8d0; }
+.backyard-program-card:nth-child(3n) { background: #f9de96; }
+.backyard-program-card .backyard-program-time,
+.backyard-program-card h4 {
+  color: #242854;
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+.backyard-program-card .backyard-program-time { margin: 0 0 28px; }
+.backyard-program-card h4 { margin: 0 0 6px; }
+.backyard-program-card .backyard-program-description {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.backyard-program-description + .backyard-program-description { padding-top: 12px; }
+@media (max-width: 767px) {
+  .backyard-program-grid { gap: 40px; }
+  .backyard-program-card { padding: 22px 20px; }
+  .backyard-program-card .backyard-program-time { margin-bottom: 24px; }
+}
