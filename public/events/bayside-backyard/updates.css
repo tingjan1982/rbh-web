@@ -56,6 +56,9 @@
   font-display: swap;
   src: url('/assets/fonts/amatic-sc-bold.ttf') format('truetype');
 }
+.backyard-program {
+  background: #65b9e3 url('/assets/events/bayside-backyard-program-02.png') center / cover no-repeat;
+}
 .backyard-program-grid { gap: 40px; }
 .backyard-program-day { min-width: 0; color: #242854; text-align: left; }
 .backyard-program-day .backyard-day-title {
