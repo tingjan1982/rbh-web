@@ -113,3 +113,48 @@
   .backyard-program-card { padding: 22px 20px; }
   .backyard-program-card .backyard-program-time { margin-bottom: 24px; }
 }
+
+/* Updated introduction, survey placement, date reminder and partner grouping. */
+.backyard-intro-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(24px, 5vw, 64px);
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+.backyard-intro-row h2 { margin: 0 0 24px; }
+.backyard-intro-row p, .backyard-intro-row li { font-size: 16px; line-height: 1.7; }
+.backyard-intro-row p { margin: 0; }
+.backyard-intro-row img { max-width: 320px; margin: auto; }
+.backyard-survey-intro { margin-top: 48px; margin-bottom: 48px; }
+.backyard-dates ul { padding-left: 24px; margin: 0 0 20px; }
+.backyard-dates li + li { margin-top: 12px; }
+.backyard-organisers, .backyard-partner-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.backyard-organisers { margin-top: 48px; gap: 64px; }
+.backyard-organisers .backyard-logo { width: 200px; }
+.backyard-partner-logos .backyard-logo { width: 120px; }
+.backyard-partners img { height: 120px; object-fit: contain; }
+.backyard-organisers img { height: 150px; }
+@media (max-width: 767px) {
+  .backyard-intro-row { grid-template-columns: minmax(0, 1fr); max-width: 500px; }
+  .backyard-intro-row img { max-width: 240px; }
+  .backyard-organisers { gap: 24px; }
+  .backyard-organisers .backyard-logo { width: 140px; }
+  .backyard-partner-logos { gap: 24px; }
+}
+
+/* Give the sun artwork the prominence of the source event page. */
+.backyard-intro-row .backyard-sun { max-width: 400px; }
+@media (max-width: 767px) {
+  .backyard-intro-row .backyard-sun { max-width: 320px; }
+}
