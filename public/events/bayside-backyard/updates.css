@@ -21,9 +21,19 @@
   margin: 0 auto;
   align-items: start;
 }
-.backyard-activities { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.backyard-activities { grid-template-columns: repeat(6, minmax(0, 1fr)); row-gap: 64px; }
+.backyard-activities > div { grid-column: span 2; }
+.backyard-activities > div:nth-child(4) { grid-column: 2 / span 2; }
+.backyard-activities > div:nth-child(5) { grid-column: 4 / span 2; }
 .backyard-program-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 1000px; }
 .backyard-update img { display: block; width: 100%; height: auto; }
+.backyard-activities img {
+  width: 78%;
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
 .backyard-booking {
   display: inline-block;
   box-sizing: border-box;
@@ -41,7 +51,9 @@
 .backyard-consultation p { margin: 24px auto 0; line-height: 1.7; text-align: left; }
 .backyard-consultation iframe { display: block; width: 100%; max-width: 900px; height: 600px; margin: auto; border: 0; }
 @media (max-width: 767px) {
-  .backyard-activities { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .backyard-activities { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
+  .backyard-activities > div:nth-child(n) { grid-column: auto; }
+  .backyard-activities img { width: 100%; }
   .backyard-program-grid { grid-template-columns: minmax(0, 1fr); max-width: 500px; }
 }
 @media (max-width: 480px) {
@@ -131,26 +143,38 @@
 .backyard-survey-intro { margin-top: 48px; margin-bottom: 48px; }
 .backyard-dates ul { padding-left: 24px; margin: 0 0 20px; }
 .backyard-dates li + li { margin-top: 12px; }
-.backyard-organisers, .backyard-partner-logos {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  max-width: 1100px;
+.backyard-partner-logos {
+  display: grid;
+  grid-template-columns: repeat(20, minmax(0, 1fr));
+  gap: 24px 0;
+  max-width: 1000px;
   margin: 0 auto;
+  align-items: center;
 }
-.backyard-organisers { margin-top: 48px; gap: 64px; }
-.backyard-organisers .backyard-logo { width: 200px; }
-.backyard-partner-logos .backyard-logo { width: 120px; }
-.backyard-partners img { height: 120px; object-fit: contain; }
-.backyard-organisers img { height: 150px; }
+.backyard-partner-logos .backyard-logo { grid-column: span 4; }
+.backyard-partner-logos .backyard-logo:nth-child(-n + 4) { grid-column: span 5; }
+.backyard-organisers {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  margin: 48px auto 0;
+}
+.backyard-partners .backyard-logo { min-width: 0; }
+.backyard-partners .backyard-logo img {
+  width: 140px;
+  max-width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  object-fit: contain;
+}
 @media (max-width: 767px) {
   .backyard-intro-row { grid-template-columns: minmax(0, 1fr); max-width: 500px; }
   .backyard-intro-row img { max-width: 240px; }
   .backyard-organisers { gap: 24px; }
   .backyard-organisers .backyard-logo { width: 140px; }
-  .backyard-partner-logos { gap: 24px; }
+  .backyard-partner-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; max-width: 400px; }
+  .backyard-partner-logos .backyard-logo:nth-child(n) { grid-column: auto; }
+  .backyard-partner-logos .backyard-logo:last-child { grid-column: 1 / -1; }
 }
 
 /* Give the sun artwork the prominence of the source event page. */
@@ -158,3 +182,17 @@
 @media (max-width: 767px) {
   .backyard-intro-row .backyard-sun { max-width: 320px; }
 }
+
+/* Compensate for whitespace inside these logo files without changing the row sizes. */
+.backyard-partners .backyard-logo-pilates,
+.backyard-partners .backyard-logo-straddie {
+  width: 140px;
+  max-width: 100%;
+  height: 100px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.backyard-logo-pilates img { transform: scale(3); }
+.backyard-logo-straddie img { transform: scale(1.25); }
+
+.backyard-partners h2 { font-size: clamp(20px, 2.1vw, 28px); }
