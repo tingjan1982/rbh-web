@@ -115,11 +115,14 @@ nav a.is-active {
 }
 
 .event-promo {
-  padding: clamp(24px, 4vw, 48px) clamp(18px, 4vw, 56px);
+  padding: 24px clamp(18px, 4vw, 56px);
   background: #fff;
 }
 
 .event-promo-link {
+  width: fit-content;
+  max-width: min(100%, 1100px);
+  margin: 0 auto;
   position: relative;
   display: block;
   overflow: hidden;
@@ -129,8 +132,11 @@ nav a.is-active {
 
 .event-promo-image {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
+  max-height: calc(100svh - 220px);
+  object-fit: contain;
 }
 
 .event-promo-cta {

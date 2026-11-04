@@ -1213,6 +1213,23 @@ function HomePage() {
       <Header />
 
       <main id="home">
+        <section className="event-promo" aria-label="Bayside Backyard event promotion">
+          <a
+            className="event-promo-link"
+            href="/events/bayside-backyard/index.html"
+            aria-label="View Bayside Backyard event details"
+          >
+            <img
+              src="/assets/events/bayside-backyard-banner-v2.png"
+              alt="Bayside Backyard at Raby Bay Harbour, 31 October and 1 November"
+              className="event-promo-image"
+              width="2500"
+              height="1406"
+            />
+            <span className="event-promo-cta">View event details</span>
+          </a>
+        </section>
+
         <section className="hero" aria-labelledby="hero-title">
           <img src="/assets/raby-bay-harbour-aerial.jpg" alt="" className="hero-image" />
           <div className="hero-overlay" />
